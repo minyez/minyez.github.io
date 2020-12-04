@@ -28,6 +28,6 @@
     "hexo-tag-bootstrap": "^0.1.2",
     "hexo-tag-rtl": "0.0.3",
     "hexo-wordcount": "^6.0.1",
-    "highlight.js": "^10.1.1"
+    "highlight.js": "^10.4.1"
   }
 }
