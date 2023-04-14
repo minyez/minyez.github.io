@@ -1,3 +1,24 @@
+Personal site, forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
+Synced to commit [`1719d81`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/1719d81d00b32b107c35b3903089be84a9b28a6c).
+
+Build memo
+```shell
+# build assest, from tools/init
+# maybe necessary after sync to a new commit
+npm i && npm run build
+
+# build gem necessary for Jekyll and the theme
+bundle config set --local path "$HOME/.gem"
+bundle
+
+# deploy local
+bundle exec jekyll serve --livereload
+```
+
+Below is the original readme
+
+---
+
 <!-- markdownlint-disable-next-line -->
 <div align="center">
 
