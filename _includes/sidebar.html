@@ -104,6 +104,10 @@
           {%- capture url -%}
             https://{{ entry.type }}.com/{{ site[entry.type].username }}
           {%- endcapture -%}
+        {% when 'orcid' %}
+          {%- capture url -%}
+            https://{{ entry.type }}.org/{{ site[entry.type].username }}
+          {%- endcapture -%}
         {% when 'email' %}
           {%- unless site.social.email -%}
             {%- continue -%}
