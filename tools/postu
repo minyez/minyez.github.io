@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2068,SC2001
+
+JEKYLL_HOME="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")"
+
+help_info() {
+  echo "Post utility"
+  echo ""
+  echo "Usage: $0 [options] <cmd> <args>"
+  echo ""
+  echo "Commands:"
+  echo "  h,help    - print help info and exit"
+  echo "  l,list    - list all posts (including drafts)"
+  echo "  pp <pdir> - publish post under directory <pdir>"
+  echo "  dp <pdir> - convert post under directory <pdir> to draft"
+  echo ""
+  echo "Examples:"
+}
+
+remove_timestamp() {
+  # remove timestamp in post name
+  pn_parsed="$1"
+  echo "$pn_parsed" | sed 's/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-\(.*\)/\1/'
+}
+
+add_timestamp() {
+  # add timestamp to postname
+  pn_parsed="$1"
+  # remove timestamp first
+  pn="$(remove_timestamp "$pn_parsed")"
+  echo "$(date +"%Y-%m-%d")-$pn"
+}
+
+list_all() {
+  cd "$JEKYLL_HOME" || exit 10
+  ls -1 _posts
+}
+
+publish_post() {
+  _pd="$1"
+  [[ -z "$_pd" ]] && echo "<pdir> is required" && exit 1
+  cd "$JEKYLL_HOME" || exit 10
+  cd _posts || exit 10
+  if [[ ! -d "$_pd" ]]; then
+    _date_pd=$(find . -maxdepth 1 -type d -name "*-*-*-$_pd" 2> /dev/null)
+    _date_pd="${_date_pd##./}"
+    if [[ -z "$_date_pd" ]]; then
+      echo "<pdir> $_pd does not exist under _posts" && exit 1
+    else
+      echo "<pdir> $_pd is already published as $_date_pd" && exit 2
+    fi
+  fi
+  draft=0
+  [[ -f "$_pd/index.md" ]] && draft=1
+  pn="$(remove_timestamp "$_pd")"
+  [[ "$pn" == "$_pd" ]] && draft=1
+  (( draft == 0 )) && echo "<pdir> $_pd is already published" && exit 2
+  new_pn="$(add_timestamp "$pn")"
+  sed -i -e '/^date:/d' -e "/^title:/a date: $(date +"%Y-%m-%d %H:%M:%S %z")" "$_pd/index.md" || exit 3
+  echo "publishing $_pd"
+  echo "           renaming $_pd/index.md -> $_pd/$new_pn.md"
+  mv "$_pd/index.md" "$_pd/$new_pn.md"
+  echo "           renaming directory $_pd -> $new_pn"
+  mv "$_pd" "$new_pn"
+}
+
+draft_post() {
+  _pd="$1"
+  [[ -z "$_pd" ]] && echo "<pdir> is required" && exit 1
+  cd "$JEKYLL_HOME" || exit 10
+  cd _posts || exit 10
+  draft=0
+  pn="$(remove_timestamp "$_pd")"
+  [[ "$pn" == "$_pd" ]] && drat=1
+  (( draft != 0 )) && echo "<pdir> $_pd is already a draft"
+  sed -i -e '/^date:/d' "$_pd/$_pd.md" || exit 3
+  echo "drafting $_pd"
+  echo "         renaming $_pd/$new_pn.md -> $_pd/index.md"
+  mv "$_pd/$_pd.md" "$_pd/index.md"
+  echo "         renaming directory $_pd -> $pn"
+  mv "$_pd" "$pn"
+}
+
+main() {
+  while [ ${#} -gt 0 ]; do
+    case "$1" in
+      h | help ) help_info; exit 0 ;;
+      l | list ) list_all;;
+      pp ) shift 1; publish_post "$1";;
+      dp ) shift 1; draft_post "$1";;
+      * ) echo "Unknown option $0"; help_info; exit 1;;
+    esac
+    shift 1
+  done
+}
+
+main $@
