@@ -2,8 +2,9 @@
 title: Numerov method on linear and logarithmic grids (CN)
 date: 2019-03-03 14:00:00 +0800
 categories: [scicomput, algorithm]
-tags: [Numerical method]
+tags: [Numerical method, Python]
 math: true
+lang: zh-CN
 ---
 
 ## 背景
@@ -34,9 +35,9 @@ $$
 
 ## 推导
 
-### 均匀格点
+### 线性均匀格点
 
-首先在均匀格点上推导一下Numerov方法. 在$r$点附近对函数$y$作Taylor展开
+首先在线性均匀格点上推导一下Numerov方法. 在$r$点附近对函数$y$作Taylor展开
 
 $$
 \begin{equation}\label{eq:deriv-1}
@@ -66,7 +67,7 @@ p(r-h)+p(r+h) = 2p(r) + h^2 p''(r) + \frac{h^4}{12}p''''(r) + \mathcal{O}(h^6).
 \end{equation}
 $$
 
-把$p, p''$表达式 \eqref{eq:deriv-3} 回代到式 \eqref{eq:deriv-2} 中,
+把$p, p^{''}$表达式 \eqref{eq:deriv-3} 回代到式 \eqref{eq:deriv-2} 中,
 
 $$
 y(r-h)+y(r+h) = 2y(r) + h^2p(r) + \frac{h^4}{12}\left[p(r-h)+p(r+h)-2p(r)\right] + \mathcal{O}(h^6).
@@ -81,13 +82,13 @@ $$
 \end{aligned}
 $$
 
-这就是Numerov方法的一般方程. 特别的, 对于齐次方程, $s=0$, 式子可以化简成
+这就是 Numerov 方法的一般方程. 特别的, 对于齐次方程, $s=0$, 式子可以化简成
 
 $$
 \left[1+\frac{h^2}{12}f(r+h)\right]y(r+h) = 2\left[1+\frac{h^2}{12}f(r)\right]y(r) - \left[1+\frac{h^2}{12}f(r-h)\right]y(r-h) - h^2f(r)y(r) + \mathcal{O}(h^6).
 $$
 
-取间距为$h$的均匀格点, 此时上式化成三点递推方程,
+取间距为 $h$ 的均匀格点, 此时上式化成三点递推方程,
 
 $$
 (1+\frac{h^2}{12}f_{n+1})y_{n+1} = 2(1+\frac{h^2}{12}f_n)y_n - (1+\frac{h^2}{12}f_{n-1})y_{n-1} - h^2f_n y_n
@@ -95,21 +96,25 @@ $$
 
 精确到步长的六次方. 实际应用当中, 我们需要先确定前两个格点上的值, 然后就可以用上式推出第三点及之后所有格点上的函数值.
 
-### 对数格点
+### 对数均匀格点
 
-除了实空间均匀格点, 我们也可以使用对数均匀格点(logarithmic grid), 其上第n个实空间格点为
+除了实空间均匀格点, 我们也可以使用对数均匀格点 (logarithmic grid), 其上第 n 个实空间格点为
 
 $$
 r_n = r_0 e^{nh}
 $$
 
-上面的Numerov方法不能直接用于格点$\{r_n\}$, 因为这种情况下格点$r$间距是变化的, 但是我们可以通过代数变换使之成为可能. 首先定义变量替换$x\mapsto r$
+上面的 Numerov 方法不能直接用于格点$\{r_n\}$,
+因为这种情况下格点 $r$ 的间距是随格点指标变化的,
+但是我们可以通过代数变换使之成为可能.
+
+首先定义变量替换$x\mapsto r$
 
 $$
 r(x) = r_0e^x
 $$
 
-及定义$Y(x)$为
+及定义 $Y(x)$ 为
 
 $$\begin{equation}\label{eq:log-trans-y}
 y(r) = r_0e^{x/2}Y(x).
@@ -142,7 +147,7 @@ S(x):=&r_0e^{3x/2}s(r) = \sqrt{\frac{r(x)^3}{r_0}}s(r(x))
 \end{aligned}
 \end{equation}$$
 
-于是得到ODE
+于是得到 ODE
 
 $$
 Y''(x) + F(x)Y(x) = S(x)
@@ -152,9 +157,11 @@ $$
 
 ## Python实现
 
-以下是忽略了s后, Numerov方法在均匀格点和对数格点上的Python实现. Numba装饰器用于编译优化.
+以下是忽略了s后, Numerov方法在线性格点和对数格点上的Python实现.
+Numba 装饰器用于编译优化.
 
-首先是均匀格点上的实现`numerov`, 参考了[Kristjan Haule](https://www.physics.rutgers.edu/grad/509/src_prog/hmw/Hydrogen.html)的代码.
+首先是线性均匀格点上的实现`numerov`.
+这里参考了[Kristjan Haule](https://www.physics.rutgers.edu/grad/509/src_prog/hmw/Hydrogen.html)的代码.
 
 ```python
 @numba.njit
@@ -185,12 +192,12 @@ def numerov(f, h, y0, dy0):
     return y
 ```
 
-然后是对数格点上的实现`numerov_log`:
+然后是对数均匀格点上的实现`numerov_log`:
 
 ```python
 @numba.njit
 def numerov_log(r, f, y0, dy0):
-    '''Solve y''(r) + f(r)y(r) = 0 by Numerov method on an exponential r grid
+    '''Solve y''(r) + f(r)y(r) = 0 by Numerov method on a logarithmic r grid
 
     Args:
         r (1d-array): the logarithmic grid
