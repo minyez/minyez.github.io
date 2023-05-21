@@ -1,5 +1,5 @@
 ---
-title: XmGrace tips (Chinese)
+title: XmGrace tips (CN)
 date: 2019-07-31 20:14:19 +0800
 categories: [software, plots]
 tags: [XmGrace]
