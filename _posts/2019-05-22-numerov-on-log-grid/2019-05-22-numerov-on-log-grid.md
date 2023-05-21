@@ -10,9 +10,9 @@ math: true
 
 [Numerov方法](https://en.wikipedia.org/wiki/Numerov%27s_method)是数值求解常微分方程(ODE)的一种方法, 适用于不含一阶项的二阶ODE
 
-$$\begin{equation}
+$$\begin{equation}\label{eq:numerov-ode}
 y'' + f(r)y = s(r).
-\end{equation}\label{eq:numerov-ode}
+\end{equation}
 $$
 
 在物理上有很多方程满足这种形式, 其中与我最为相关的是薛定谔方程(SE), 更确切的是三维有心势下的径向薛定谔方程(rSE). 原子单位下, rSE写成
@@ -58,7 +58,7 @@ $$
 y''''(r) = \frac{d^2}{d r^2}\left[f(r)y(r)-s(r)\right],
 $$
 
-定义$p(r):=f(r)y(r)-s(r), p=y'', p''=y''''$, 可以采用与式$\eqref{eq:deriv-1}\eqref{eq:deriv-2}$类似的办法处理$p$, 得到
+定义$p(r):=f(r)y(r)-s(r), p=y'', p''=y''''$, 可以采用与式 \eqref{eq:deriv-1} \eqref{eq:deriv-2} 类似的办法处理$p$, 得到
 
 $$
 \begin{equation}\label{eq:deriv-3}
@@ -66,7 +66,7 @@ p(r-h)+p(r+h) = 2p(r) + h^2 p''(r) + \frac{h^4}{12}p''''(r) + \mathcal{O}(h^6).
 \end{equation}
 $$
 
-把$p, p''$表达式$\eqref{eq:deriv-3}$回代到式$\eqref{eq:deriv-2}$中,
+把$p, p''$表达式 \eqref{eq:deriv-3} 回代到式 \eqref{eq:deriv-2} 中,
 
 $$
 y(r-h)+y(r+h) = 2y(r) + h^2p(r) + \frac{h^4}{12}\left[p(r-h)+p(r+h)-2p(r)\right] + \mathcal{O}(h^6).
@@ -111,9 +111,9 @@ $$
 
 及定义$Y(x)$为
 
-$$\begin{equation}
+$$\begin{equation}\label{eq:log-trans-y}
 y(r) = r_0e^{x/2}Y(x).
-\end{equation}\label{eq:log-trans-y}$$
+\end{equation}$$
 
 从而
 
@@ -124,7 +124,7 @@ $$
 \end{aligned}
 $$
 
-其中撇号代表对$x$求导而非$r$. 代回到式$\eqref{eq:numerov-ode}$的ODE中
+其中撇号代表对$x$求导而非$r$. 代回到式 \eqref{eq:numerov-ode} 的ODE中
 
 $$
 \begin{aligned}
@@ -135,12 +135,12 @@ $$
 
 令
 
-$$\begin{equation}
+$$\begin{equation}\label{eq:log-trans-f-s}
 \begin{aligned}
 F(x):=&f(r)r^2_0e^{2x}-\frac{1}{4}= f(r(x))r(x)^2-\frac{1}{4} \\
 S(x):=&r_0e^{3x/2}s(r) = \sqrt{\frac{r(x)^3}{r_0}}s(r(x))
 \end{aligned}
-\end{equation}\label{eq:log-trans-f-s}$$
+\end{equation}$$
 
 于是得到ODE
 
@@ -148,7 +148,7 @@ $$
 Y''(x) + F(x)Y(x) = S(x)
 $$
 
-这与原始ODE$\eqref{eq:numerov-ode}$相似, 但它定义在变量$x$上而非实空间$r$上. 由于格点$x$是均匀的, 我们可以应用前面均匀格点的算法解出$Y(x)$, 然后再通过式$\eqref{eq:log-trans-y}$变换回$y(r)$.
+这与原始ODE \eqref{eq:numerov-ode} 相似, 但它定义在变量$x$上而非实空间$r$上. 由于格点$x$是均匀的, 我们可以应用前面均匀格点的算法解出$Y(x)$, 然后再通过式 \eqref{eq:log-trans-y} 变换回 $y(r)$.
 
 ## Python实现
 
