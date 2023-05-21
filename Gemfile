@@ -4,6 +4,10 @@ source "https://rubygems.org"
 
 gemspec
 
+group :jekyll_plugins do
+  gem 'jekyll-postfiles'
+end
+
 gem "html-proofer", "~> 5.0", group: :test
 
 platforms :windows, :jruby do
