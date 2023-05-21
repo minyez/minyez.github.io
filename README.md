@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c431871d-54ce-4a40-8894-d2848364e94b/deploy-status)](https://app.netlify.com/sites/minyez/deploys)
+
 Personal site, forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
 Synced to commit [`1719d81`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/1719d81d00b32b107c35b3903089be84a9b28a6c).
 
