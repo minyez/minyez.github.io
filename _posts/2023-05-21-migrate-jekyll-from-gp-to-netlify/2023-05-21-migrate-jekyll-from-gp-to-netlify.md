@@ -9,10 +9,10 @@ tags: [Jekyll, Netlify, GitHub]
 
 The Jekyll plugin [jekyll-postfiles](https://github.com/nhoizey/jekyll-postfiles)
 is handy when writing posts.
-When building, it copies files in the post directory under the right place in
+When building, it copies files in the post directory to the right place in
 the site build, so that image or file links, e.g. `![fig](fig.png)` in post
-markdown, just works. It meanwhile keeps the original `![](/assets/fig.png)` way
-to refer to assets.
+markdown, works after converting to HTML. It meanwhile keeps the original
+`![](/assets/fig.png)` way to refer to assets.
 One needs to add following to `Gemfile` to install this plugin
 ```ruby
 source "https://rubygems.org"
@@ -34,7 +34,7 @@ use `jekyll-postfiles` with GitHub Pages.
 To use `jekyll-postfiles` for remote building, use of site services is suggested.
 I decide to give [Netlify](https://www.netlify.com/) a shot.
 I have actually opened a Netlify account quite a while before by connecting to
-my GitHub account, when I saw one of my friend deploying his site there.
+my GitHub account, when I saw one of my friends deploying his site there.
 
 Below is a quick memo for myself of the migration process.
 
@@ -74,7 +74,7 @@ Go to "Site setting" tab of the site project,
 click "Change site name" and type in a meaningful site name.
 For my case, the site name is `minyez`, making the website `minyez.netlify.app`.
 
-I am bothering with custom domain at present.
+I am not bothering with custom domain at present.
 
 ## Summary
 
@@ -88,4 +88,4 @@ The official site provides a rather old
 [tutorial](https://www.netlify.com/blog/2017/05/11/migrating-your-jekyll-site-to-netlify)
 for migrating from GitHub Pages. It basically works for me as of the writing,
 while it seems not necessary to include full `github-pages` gem or have a
-`.ruby-version` file
+`.ruby-version` file.
