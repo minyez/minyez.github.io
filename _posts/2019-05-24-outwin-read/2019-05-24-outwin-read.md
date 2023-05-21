@@ -4,17 +4,18 @@ date: 2019-05-24 16:14:53 +0800
 categories: [scicomput, algorithm]
 tags: [WIEN2k, Numerical method]
 math: true
+lang: zh-CN
 ---
 
 ## 背景
 
 outwin.f在WIEN2k各程序中出现, 它包含例程`outwin`. 之前大略知道它是用来计算原子球内的径向波函数的, 但对于其算法一直很模糊, 一方面由于它涉及相对论方程, 另一方面它除了输入参数的德语注释外一句注释也没有. 最近在研究局域基组生成的问题, 而这个例程出现频率非常高, 因此准备多啃一下这块代码.
 
-不同SRC文件下的outwin.f版本也不尽同. SRC_nmr, SRC_lapw7等仍然使用Adams-Moulton四阶算法, SRC_lapw2对于第四个以外的格点允许用五阶算法. SRC_lapw7中的注释更多一些, 但仍然用的是四阶算法. 这里尝试对SRC_lapw7中的outwin.f源码进行解读.
+不同SRC文件下的 outwin.f 版本也不尽同. `SRC_nmr`, `SRC_lapw7`等仍然使用Adams-Moulton四阶算法, `SRC_lapw2` 对于第四个以外的格点允许用五阶算法. `SRC_lapw7` 中的注释更多一些, 但仍然用的是四阶算法. 这里尝试对 `SRC_lapw7`中的 outwin.f 源码进行解读.
 
 ## 原理
 
-在Rydberg单位下, 具有量子数$\kappa$的大分量波函数$u(r)=G(r)/r$满足[^1]
+在 Rydberg 单位下, 具有量子数 $\kappa$ 的大分量波函数 $u(r)=G(r)/r$ 满足[^1]
 
 $$
 \begin{equation}\label{eq:r-GF}
@@ -35,7 +36,7 @@ M(r) \equiv 1+\left(\frac{\alpha}{2}\right)^{2}(E-V(r)) = 1+\frac{E-V(r)}{c^2}
 \end{equation}
 $$
 
-$\alpha$为精细结构常数, 在Rydberg单位下$\alpha=2/c$, $c$为光速. 为在步长$h$的对数格点上进行数值计算, 作变量替换$r=r_0 e^x$, $\mathrm{d}r=r\mathrm{d}x$, 得到关于$x$的方程组
+$\alpha$ 为精细结构常数, 在Rydberg单位下 $\alpha=2/c$, $c$ 为光速. 为在步长$h$的对数格点上进行数值计算, 作变量替换 $r=r_0 e^x$, $\mathrm{d}r=r\mathrm{d}x$, 得到关于$x$的方程组
 
 $$
 \begin{equation}\label{eq:x-GF}
@@ -46,7 +47,7 @@ $$
 \end{equation}
 $$
 
-方便起见, 上式中略去了*G,F,M*的变量$r\equiv r(x)$, 撇号表示关于*x*求导.
+方便起见, 上式中略去了 *G,F,M* 的变量 $r\equiv r(x)$, 撇号表示关于*x*求导.
 
 ## 源码解读
 
@@ -94,7 +95,8 @@ $$
 
 由行列式解线性方程的知识可知, 这部分求解的是这样一个矩阵方程
 
-$$\begin{equation}\label{eq:mat-92-96}
+$$
+\begin{equation}\label{eq:mat-92-96}
 \begin{bmatrix}
 \frac{8}{3} + X & -U \\
 Y & \frac{8}{3} - X \\
@@ -107,18 +109,25 @@ B_c \\
 B1 \\
 B2 \\
 \end{bmatrix}
-\end{equation}$$
+\end{equation}
+$$
 
-这里下标c表示在代码(code)中的定义. `B1`和`B2`在93和94行计算, 基于[Adams-Moulton算法](https://en.wikipedia.org/wiki/Linear_multistep_method#Adams%E2%80%93Moulton_methods), 因为8/3来自于四阶算法
+这里下标c表示在代码(code)中的定义. `B1` 和 `B2` 在 93 和 94 行计算,
+基于[Adams-Moulton算法](https://en.wikipedia.org/wiki/Linear_multistep_method#Adams%E2%80%93Moulton_methods),
+因为 8/3 来自于四阶算法
 
 $$
 y_{n+3}=y_{n+2}+h\left(\frac{9}{24} f\left(t_{n+3}, y_{n+3}\right)+\frac{19}{24} f\left(t_{n+2}, y_{n+2}\right)-\frac{5}{24} f\left(t_{n+1}, y_{n+1}\right)+\frac{1}{24} f\left(t_{n}, y_{n}\right)\right)
 $$
 
-其中$f(t_n, y_n)=y'_n$为第n格点上y的导数. 利用上式可以将$A'_{n+3}$表示为
+其中 $f(t_{n}, y_{n})=y'_{n}$ 为第n格点上y的导数.
+
+利用上式, $A'_{n+3}$ 可以写成
 
 $$
+\begin{equation}
 hA'_{n+3} = \frac{8}{3}A_{n+3} - \frac{8}{3}A_{n+2} - \frac{19}{9}hA'_{n+2} + \frac{5h}{9}A'_{n+1} - \frac{h}{9}A'_n
+\end{equation}
 $$
 
 将式 \eqref{eq:UYAB} 两边乘以$h$后, 在格点$n+3$处的表达式为
@@ -132,7 +141,7 @@ $$
 \end{equation}
 $$
 
-如果把上式看成未知数$A_{n+3}$和$B_{n+3}$的二元一次方程, 其系数矩阵和 \eqref{eq:mat-92-96} 是相同的. 检查`DGn`和`DFn`的含义(见下面一节)以及系数`Rn`, 可以发现式子 \eqref{eq:n-3-UYAB} 右侧与`B1`和`B2`也是一致的. 因此我们定义的$A$和$B$与outwin.f中的含义是一致的.
+如果把上式看成未知数 $A_{n+3}$ 和 $B_{n+3}$ 的二元一次方程, 其系数矩阵和 \eqref{eq:mat-92-96} 是相同的. 检查`DGn`和`DFn`的含义(见下面一节)以及系数`Rn`, 可以发现式子 \eqref{eq:n-3-UYAB} 右侧与`B1`和`B2`也是一致的. 因此我们定义的$A$和$B$与outwin.f中的含义是一致的.
 
 ### 行98-103
 
@@ -143,11 +152,9 @@ DG3 = U*B(K) - X*A(K)
 ```
 
 由式 \eqref{eq:UYAB} 和`X`等于*-h*, 可得
-
 $$
 DG3 = U_K B_K + h A_K = h(A_K + \frac{U_K}{h}B_K) = hA'_K
 $$
-
 因此`DG3`是$h$乘以A在格点K上的导数. 同理, `DF3`的更新表达式
 
 ```fortran
