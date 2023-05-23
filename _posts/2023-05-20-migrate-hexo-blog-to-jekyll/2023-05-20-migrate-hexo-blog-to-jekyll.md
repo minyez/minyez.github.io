@@ -51,6 +51,7 @@ other than the `_config.yml` configuration file
   [the comment from Chirpy's author](https://github.com/cotes2020/jekyll-theme-chirpy/issues/172#issuecomment-823987550)
 - Add an ORCID social link in `_includes/sidebar.html` and switch it on in `_data/contact.yml`
 - Modify foreground color of inline code in light mode by changing `--highlighter-rouge-color` in `_sass/colors/light-syntax.scss`
+- Enable equation numbering by modifying `_includes/js-selector.html`
 
 ### Tool
 
