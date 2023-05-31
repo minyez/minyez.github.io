@@ -2,7 +2,7 @@
 title: Numerov method on linear and logarithmic grids (CN)
 date: 2019-03-03 14:00:00 +0800
 categories: [scicomput, algorithm]
-tags: [Numerical method, Python]
+tags: [Numerical Method, Python]
 math: true
 lang: zh-CN
 ---
