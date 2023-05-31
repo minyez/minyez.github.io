@@ -2,6 +2,11 @@
 # shellcheck disable=SC2068,SC2001
 
 JEKYLL_HOME="$(dirname "$(dirname "$(realpath "${BASH_SOURCE[0]}")")")"
+EDITOR="nvim"
+SED="sed"
+if [[ $OSTYPE != "${OSTYPE##darwin}" ]]; then
+  SED="gsed"
+fi
 
 help_info() {
   echo "Post utility"
@@ -13,15 +18,29 @@ help_info() {
   echo "  l,list       - list all posts (including drafts)"
   echo "  pp <pdir>    - publish post under directory <pdir>"
   echo "  dp <pdir>    - convert post under directory <pdir> to draft"
+  echo "  nd <title>   - create a new draft post after <title>"
   echo "  rp <n1> <n2> - rename post directory <n1> to <n2> (directory name only)"
   echo ""
   echo "Examples:"
 }
 
+slugize_hypen() {
+  # $1: string
+  lower=1
+  (( $# == 2 )) && [[ "$2" == "no" ]] && lower=0
+  if (( lower )); then
+    msg=$(echo "$1" | awk '{print tolower($0)}')
+  else
+    msg="$1"
+  fi
+  echo "$msg" | $SED -e 's/[ :,_\\+]\+/-/g'
+  # echo "${msg//[ :,-\\+]\+//_}"
+}
+
 remove_timestamp() {
   # remove timestamp in post name
   pn_parsed="$1"
-  echo "$pn_parsed" | sed 's/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-\(.*\)/\1/'
+  echo "$pn_parsed" | $SED 's/[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}-\(.*\)/\1/'
 }
 
 is_published() {
@@ -66,7 +85,7 @@ publish_post() {
   [[ "$pn" == "$_pd" ]] && draft=1
   (( draft == 0 )) && echo "<pdir> $_pd is already published" && exit 2
   new_pn="$(add_timestamp "$pn")"
-  sed -i -e '/^date:/d' -e "/^title:/a date: $(date +"%Y-%m-%d %H:%M:%S %z")" "$_pd/index.md" || exit 3
+  $SED -i -e '/^date:/d' -e "/^title:/a date: $(date +"%Y-%m-%d %H:%M:%S %z")" "$_pd/index.md" || exit 3
   echo "publishing $_pd"
   echo "           renaming $_pd/index.md -> $_pd/$new_pn.md"
   mv "$_pd/index.md" "$_pd/$new_pn.md"
@@ -83,7 +102,7 @@ draft_post() {
   pn="$(remove_timestamp "$_pd")"
   [[ "$pn" == "$_pd" ]] && draft=1
   (( draft != 0 )) && echo "<pdir> $_pd is already a draft"
-  sed -i -e '/^date:/d' "$_pd/$_pd.md" || exit 3
+  $SED -i -e '/^date:/d' "$_pd/$_pd.md" || exit 3
   echo "drafting $_pd"
   echo "         renaming $_pd/$new_pn.md -> $_pd/index.md"
   mv "$_pd/$_pd.md" "$_pd/index.md"
