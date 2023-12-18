@@ -116,7 +116,7 @@ cmake -C ../inital_cache.cmake .. && make -j 8
 ## Test
 ```shell
 OMP_NUM_THREADS=1 python3 ./regressiontools.py full --force \
-    --exclude="i-PI tests" --exclude="Python-based tests" --mpiexe "mpirun" --cpus 4 \
+    --exclude="version" --exclude="libaims ASI" --exclude="ASE" --mpiexe "mpirun" --cpus 4 \
     --batch ./references_lastrelease ../build_mpich_openblas/aims.231208.scalapack.mpi.x
 ```
 
