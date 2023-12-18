@@ -1,8 +1,8 @@
 ---
 title: Migrate Hexo blog to Jekyll
 date: 2023-05-20 18:46:44 +0200
-categories: [misc, internet]
-tags: [Jekyll, GitHub]
+categories: [tool, internet]
+tags: [Jekyll, GitHub, Blog]
 ---
 
 ## Motivation
