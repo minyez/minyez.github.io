@@ -39,5 +39,5 @@ Weblio 上「重い腰」的意思是
 更新 RSS, 看到 [Prot](https://protesilaos.com) 最近公开的一篇
 [邮件回复](https://protesilaos.com/commentary/2023-04-27-re-question-organizing-thoughts)，
 提到了 all-or-nothing mindset, 其实也就是完美主义。
-他说勿过于苛刻，用 hear-and-now 去代替它，在 trial-and-error 中成长，才能最终打破这个循环。
+他说勿过于苛刻，用 here-and-now 去代替它，在 trial-and-error 中成长，才能最终打破这个循环。
 老生常谈，但还是很难做到。
