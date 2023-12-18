@@ -1,8 +1,8 @@
 ---
 title: Migrate blog from GitHub Pages to Netlify
 date: 2023-05-21 19:20:38 +0200
-categories: [misc, internet]
-tags: [Jekyll, Netlify, GitHub]
+categories: [tool, internet]
+tags: [Jekyll, Netlify, GitHub, Blog]
 ---
 
 ## Introduction
