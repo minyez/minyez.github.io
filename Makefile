@@ -1,6 +1,6 @@
 # deploy local
 default:
-		bundle exec jekyll serve --livereload
+		bundle exec jekyll serve --livereload --trace
 
 # build assest, from tools/init, maybe necessary after sync to a new commit
 build:
