@@ -22,7 +22,7 @@ description: >- # used by seo meta and the atom feed
   minyez's personal site
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://minyez.netlify.app"
+url: "https://blog.minyez.me"
 
 github:
   username: minyez # change to your github username
@@ -115,7 +115,7 @@ assets:
 pwa:
   enabled: true # the option for PWA feature
 
-paginate: 20
+paginate: 5
 
 # The base URL of your site
 baseurl: ""
