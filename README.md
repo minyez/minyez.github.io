@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c431871d-54ce-4a40-8894-d2848364e94b/deploy-status)](https://app.netlify.com/sites/minyez/deploys)
 
 Personal site, forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
-Synced to commit [`1719d81`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/1719d81d00b32b107c35b3903089be84a9b28a6c).
+Synced to commit [`c45e031`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/c45e0311552e320417bb3d6cab4296d678e14037).
 
 Build memo
 ```shell
@@ -15,6 +15,20 @@ bundle
 
 # deploy local
 bundle exec jekyll serve --livereload
+```
+
+Note
+- Remove local browser cache if there exists inconsistency between pages (see for example Chirpy issue [#1236](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1236))
+
+Update Chirpy by rebasing
+```shell
+# backup
+git checkout master
+git branch master_backup_<date>
+git remote add upstream https://github.com/cotes2020/jekyll-theme-chirpy.git
+git branch upstream upstream/master
+git rebase upstream
+git branch -d upstream
 ```
 
 Below is the original readme
