@@ -9,7 +9,7 @@
 >
   <p>
     {{ '©' }}
-    <time>{{ 'now' | date: '%Y' }}</time>
+    <time>2017-{{ 'now' | date: '%Y' }}</time>
     <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
     {% if site.data.locales[include.lang].copyright.brief %}
       <span
