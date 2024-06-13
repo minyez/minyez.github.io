@@ -104,7 +104,7 @@ draft_post() {
   (( draft != 0 )) && echo "<pdir> $_pd is already a draft"
   $SED -i -e '/^date:/d' "$_pd/$_pd.md" || exit 3
   echo "drafting $_pd"
-  echo "         renaming $_pd/$new_pn.md -> $_pd/index.md"
+  echo "         renaming $_pd/$_pd.md -> $_pd/index.md"
   mv "$_pd/$_pd.md" "$_pd/index.md"
   echo "         renaming directory $_pd -> $pn"
   mv "$_pd" "$pn"
