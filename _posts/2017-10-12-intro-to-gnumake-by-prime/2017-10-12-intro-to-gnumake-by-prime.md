@@ -5,7 +5,6 @@ categories: [programming, ]
 tags: [GNU/Make]
 comment: false
 math: true
-lang: zh-CN
 ---
 
 本文从编译一个简单的质数判断程序入手, 介绍如何利用 GNU/Make 方便地编译较复杂的代码项目。
