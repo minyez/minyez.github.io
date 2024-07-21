@@ -1,5 +1,7 @@
 ---
 author: Min-Ye Zhang
+bibliography:
+- etc/bibliography.bib
 categories: tool
 comment: false
 date: "2024-07-21 11:50:20 +0200"
@@ -75,7 +77,16 @@ pandoc plugin of the org module in `init.el`
 ```
 
 Decent defaults have already been configured, so it is not necessary to
-add more codes to `config.el`.
+add more codes to `config.el`. If bibliography is needed, `citeproc-el`
+package should be installed and loaded.
+
+``` elisp
+;; in package.el
+(package! citeproc)
+
+;; in config.el
+(use-package! citeproc)
+```
 
 ## File setup
 
@@ -154,6 +165,35 @@ the correct `$\eqref{eq:euler}$` syntax (a pandoc filter may do the
 work). So one still need to explicitly use `$\eqref{eq:euler}$`
 (rendered as $\eqref{eq:euler}$) to refer to the equation.
 
+### Citation and Bibliography
+
+`ox-pandoc` is aware of org-cite-style citation link, for example,
+`[cite:@PerdewJ96PBE]`, and can render it into markdown-type link before
+it is parsed to pandoc using
+[citeproc-el](https://github.com/andras-simonyi/citeproc-el). One just
+needs to specify the bibliography file to look for the citation key with
+`#+bibliography` and how the entry should be exported with
+`#+cite_export`; see [this
+section](https://github.com/emacsorphanage/ox-pandoc?tab=readme-ov-file#citations-and-bibliographies-experimental)
+of `ox-pandoc`.
+
+In my case, I have a `.bib` file and citation style file under `etc/`
+directory, so I just need to add the following two lines in the heading
+
+    #+bibliography: etc/bibliography.bib
+    #+cite_export: csl etc/american-physics-society-without-titles.csl
+
+When exported to markdown, `[cite:@PerdewJ96PBE]` is rendered as
+`\[[1](#citeproc_bib_item_1)\]` and gives  \[[1](#citeproc_bib_item_1)\]
+on the Jekyll end. To print the bibliography, just insert the directive
+`#+print_bibliography:` at the place where you want to put the list of
+references. In this case, it is converted to markdown as
+
+``` markdown
+<span id="citeproc_bib_item_1"></span>\[1\] J. P. Perdew, K. Burke, and
+M. Ernzerhof, Phys. Rev. Lett. **77**, 3865 (1996).
+```
+
 ## Summary
 
 With `pandoc` and `ox-pandoc` in Emacs, I can write my org-mode notes,
@@ -161,7 +201,12 @@ convert them to markdown and finally publish them on my Jekyll site,
 without laborious manual changes. In fact, this post is written in this
 way.
 
+## References
+
+<span id="citeproc_bib_item_1"></span>\[1\] J. P. Perdew, K. Burke, and
+M. Ernzerhof, Phys. Rev. Lett. **77**, 3865 (1996).
+
 ------------------------------------------------------------------------
 
-[^1]: [Laziness is actually a fear of
-    trouble.](https://quod.lib.umich.edu/e/ecco/004892937.0001.001/1:7.180?rgn=div2;view=fulltext)
+[^1]: [Laziness is actually a fear of trouble and
+    fatigue.](https://quod.lib.umich.edu/e/ecco/004892937.0001.001/1:7.180?rgn=div2;view=fulltext)
