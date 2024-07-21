@@ -35,5 +35,7 @@
     {%- assign content = content | truncate: max_length -%}
   {%- endunless -%}
 
+  {%- comment -%}
   {{- content -}}
+  {%- endcomment -%}
 {%- endif -%}
