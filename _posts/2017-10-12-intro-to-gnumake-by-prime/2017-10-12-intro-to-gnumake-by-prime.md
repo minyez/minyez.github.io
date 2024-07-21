@@ -1,7 +1,7 @@
 ---
 title: 用 GNU/Make 构建项目 - 以一个质数判断代码为例
 date: 2017-10-12 19:41:20 +0800
-categories: [programming, toolchain]
+categories: [programming, ]
 tags: [GNU/Make]
 comment: false
 math: true

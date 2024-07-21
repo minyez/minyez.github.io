@@ -1,8 +1,7 @@
 ---
-title: 「重い腰を上げる」
+title: 「重い腰を上げる」 (CN)
 date: 2023-05-21 23:21:58 +0200
-categories: [comment, life]
-lang: zh-CN
+categories: [comment, ]
 tags: [Comics, Japanese, Chinese]
 ---
 

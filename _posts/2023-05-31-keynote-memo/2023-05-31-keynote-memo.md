@@ -1,7 +1,7 @@
 ---
 title: Keynote 备忘
 date: 2023-05-31 22:21:24 +0200
-categories: [software, wps]
+categories: [tool, ]
 tags: [Keynote, macOS]
 lang: zh-CN
 math: false
