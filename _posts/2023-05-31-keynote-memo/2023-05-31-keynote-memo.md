@@ -1,9 +1,8 @@
 ---
-title: Keynote 备忘
+title: Keynote 备忘 (CN)
 date: 2023-05-31 22:21:24 +0200
 categories: [tool, ]
 tags: [Keynote, macOS]
-lang: zh-CN
 math: false
 comment: false
 ---
