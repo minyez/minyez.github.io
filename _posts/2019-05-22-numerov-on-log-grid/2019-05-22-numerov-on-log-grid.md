@@ -4,7 +4,6 @@ date: 2019-03-03 14:00:00 +0800
 categories: [science, ]
 tags: [Numerical Method, Python, Algorithm]
 math: true
-lang: zh-CN
 ---
 
 ## 背景
