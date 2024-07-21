@@ -1,8 +1,8 @@
 ---
 title: Build FHI-aims on macOS Sonoma using GNU compilers
 date: 2023-12-18 16:57:49 +0100
-categories: [software, simulation]
-tags: [Build, FHIaims, macOS]
+categories: [programming, ]
+tags: [Build, FHI-aims, macOS, GCC]
 math: false
 comment: false
 ---

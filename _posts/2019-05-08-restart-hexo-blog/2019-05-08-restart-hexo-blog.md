@@ -1,7 +1,7 @@
 ---
 title: 关于重启这个博客的思考
 date: 2019-05-08 01:50:24 +0800
-categories: [comment, life]
+categories: [comment,]
 tags: [Blog]
 lang: zh-CN
 ---
