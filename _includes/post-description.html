@@ -8,8 +8,10 @@
 {%- if post.description -%}
   {{- post.description -}}
 {%- else -%}
+  {%- comment -%}
   {%- include no-linenos.html content=post.content -%}
   {{- content | markdownify | strip_html -}}
+  {%- endcomment -%}
 {%- endif -%}
 {%- endcapture -%}
 
