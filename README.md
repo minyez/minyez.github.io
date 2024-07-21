@@ -19,6 +19,7 @@ bundle exec jekyll serve --livereload
 
 Note
 - Remove local browser cache if there exists inconsistency between pages (see for example Chirpy issue [#1236](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1236))
+- When building using netlify or GitHub Pages, build command should include `npm run build`, like `npm run build && jekyll build`, to generate necessary files under `_sass/dist` and `assets/js/dist`, which are ignored by git.
 
 Update Chirpy by rebasing
 ```shell
