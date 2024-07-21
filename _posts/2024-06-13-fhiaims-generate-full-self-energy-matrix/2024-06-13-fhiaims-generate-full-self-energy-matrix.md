@@ -1,8 +1,8 @@
 ---
 title: Generate full GW self-energy matrix for periodic systems in FHI-aims
 date: 2024-06-13 09:35:10 +0200
-categories: [software, simulation]
-tags: [FHI-aims, GW]
+categories: [science, ]
+tags: [FHI-aims, GW, periodic system]
 lang: en
 math: true
 comment: false

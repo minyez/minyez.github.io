@@ -1,8 +1,8 @@
 ---
-title: fiddle-proof 与拖延症 
+title: fiddle-proof and procrastination (CN)
 date: 2020-07-19 16:56:37 +0800
-categories: [comment, work]
-tags: [note-taking, TaskPaper, Org-mode, GTD]
+categories: [comment, ]
+tags: [note-taking, TaskPaper, org-mode, GTD]
 comment: false
 math: true
 lang: zh-CN
