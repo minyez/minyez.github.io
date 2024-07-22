@@ -7,7 +7,6 @@ comment: false
 date: "2024-07-21 11:50:20 +0200"
 description: Finally make it possible and I can write org-mode for
   Jekyll.
-email: minyez.physchem@gmail.com
 math: true
 tags: Emacs org-mode pandoc ox-pandoc
 title: Generate Markdown from org-mode file using ox-pandoc
