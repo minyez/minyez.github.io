@@ -8,7 +8,7 @@ tags: [Comics, Japanese, Chinese]
 读日版《葬送的芙莉莲》时注意到了「重い腰を上げる」这个表达。
 上下文中，因故乡遭变，邓肯在阔别 50 多年后准备重返这个伤心之地。
 
-![葬送のフリーレン Vol. 9 Page 90](./comics-fulilian-v9-p90.jpg)
+![葬送のフリーレン Vol. 9 Page 90](comics-fulilian-v9-p90.jpg) _葬送のフリーレン Vol. 9 Page 90_
 
 Weblio 上「重い腰」的意思是
 
