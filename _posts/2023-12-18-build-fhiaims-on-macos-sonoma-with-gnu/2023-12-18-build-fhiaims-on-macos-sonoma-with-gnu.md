@@ -4,7 +4,7 @@ date: 2023-12-18 16:57:49 +0100
 categories: [programming, ]
 tags: [Build, FHI-aims, macOS, GCC]
 math: false
-comment: false
+comments: true
 ---
 
 Recently I upgraded my M2 Max MBP to Sonoma and somehow broke the Intel oneAPI suite,
