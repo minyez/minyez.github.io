@@ -3,7 +3,7 @@ author: Min-Ye Zhang
 bibliography:
 - etc/bibliography.bib
 categories: tool
-comment: false
+comments: true
 date: "2024-07-21 11:50:20 +0200"
 description: Finally make it possible and I can write org-mode for
   Jekyll.
