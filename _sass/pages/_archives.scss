@@ -64,7 +64,7 @@
   ul {
     li {
       font-size: 1.1rem;
-      line-height: 3rem;
+      line-height: 1.5rem;
 
       @extend %text-ellipsis;
 
@@ -85,7 +85,7 @@
 
         top: 0;
         left: 77px;
-        height: 3.1rem;
+        height: 2.2rem;
       }
     }
 
@@ -130,7 +130,7 @@
       width: 8px;
       height: 8px;
       float: left;
-      top: 1.35rem;
+      top: 0.6rem;
       left: 71px;
       background-color: var(--timeline-node-bg);
       box-shadow: 0 0 3px 0 #c2c6cc;
