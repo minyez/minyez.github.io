@@ -233,6 +233,11 @@ exclude:
 mathjax:
   extensions:
     - physics
+  macros:
+    - bvec:
+      name: bvec
+      command: "\\\\mathbf{#1}"
+      nargs: 1
 
 jekyll-archives:
   enabled: [categories, tags]
