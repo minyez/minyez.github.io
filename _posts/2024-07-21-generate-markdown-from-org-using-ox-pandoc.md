@@ -160,9 +160,42 @@ e^{i \pi} + 1 = 0
 It is possible in org-mode to cross-reference the equation by
 `eqref:eq:euler` using [org-ref](https://github.com/jkitchin/org-ref).
 Unfortunately it is neither acknowledged by markdown nor converted to
-the correct `$\eqref{eq:euler}$` syntax (a pandoc filter may do the
-work). So one still need to explicitly use `$\eqref{eq:euler}$`
-(rendered as $\eqref{eq:euler}$) to refer to the equation.
+the correct `$\eqref{eq:euler}$` syntax by `ox-pandoc`.
+
+The conversion can be done by using a pandoc filter (thanks to ChatGPT)
+
+``` lua
+-- Pandoc filter to replace strings starting with 'eqref:' with Math nodes
+-- In JSON AST, from
+--   {"t":"Str","c":"eqref:eq:xxx"}
+-- to
+--   {"t":"Math","c":[{"t":"InlineMath"},"\\eqref{eq:euler}"]}
+--
+-- Trailing punctuation are handled.
+function Str(el)
+  local prefix = "eqref:"
+  local content = el.text
+  if content:sub(1, #prefix) == prefix then
+    local eqref_content = content:sub(#prefix + 1)
+    local main_content, punctuation = eqref_content:match("^(.-)([%p%s]*)$")
+    local math_node = pandoc.Math('InlineMath', '\\eqref{' .. main_content .. '}')
+
+    if punctuation ~= "" then
+      return {math_node, pandoc.Str(punctuation)}
+    else
+      return math_node
+    end
+  end
+
+  return el
+end
+```
+
+Save the filter somewhere and add it to the pandoc options
+
+    #+pandoc_options: lua-filter:convert_org_ref_eqref.lua
+
+Then org-ref equation link should work: $\eqref{eq:euler}$.
 
 ### Citation and Bibliography
 
