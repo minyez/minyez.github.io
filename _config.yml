@@ -229,6 +229,10 @@ exclude:
   - "*.config.js"
   - package*.json
 
+mathjax:
+  extensions:
+    - physics
+
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
