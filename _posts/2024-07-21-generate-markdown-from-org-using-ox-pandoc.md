@@ -266,6 +266,41 @@ The block quote in HTML is
 
 > This is a danger block.
 
+### Subtree export
+
+It is possible to export a subtree of an org file and have own pandoc
+options for each subtree. The options should go to the property drawer,
+with `export_` prefix.
+
+    * Title of my subtree
+    :PROPERTIES:
+    :export_file_name: ~/my_subtree_export
+    :export_author: anonymous
+    :export_options: toc:nil tags:nil title:t date:nil author:t
+    :export_pandoc_options: shift-heading-level-by:1
+    :export_pandoc_metadata: categories:tool math:false comments:false
+    :END:
+
+Exporting the subtree either by `(org-pandoc-export-to-gfm nil t)` or
+changing export scope to subtree by `C-s` in export dispatch, will
+generate `~/my_subtree_export.md` as follows
+
+``` markdown
+---
+author: anonymous
+categories: tool
+comments: true
+math: false
+title: Title of my subtree
+---
+```
+
+This would be useful if notes are written in a single file but wants to
+be published in a series of markdown posts.
+
+One caveat is that pandoc metadata (probably also options, not tested)
+does not work with multiple lines, where only the last line is used.
+
 ## Batch export
 
 Emacs can be run in batch mode, so that the conversion can be done
@@ -319,6 +354,9 @@ process triggered by `org-pandoc-export-to-gfm` (see
 [ox-pandoc#6](https://github.com/emacsorphanage/ox-pandoc/issues/6)) to
 finish. Otherwise it would be killed before the markdown is correctly
 generated.
+
+Batch export of subtree should possible but needs more tweak, which goes
+beyond the scope of this note.
 
 ## Summary
 
