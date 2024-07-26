@@ -15,9 +15,21 @@ MathJax = {
     {%- endfor -%}
   ]},
   {%- endif -%}
-
   tex: {
-    {%- if site.mathjax.extensions -%}
+    {%- comment %} macros {% endcomment -%}
+    {%- if site.mathjax.macros -%}
+    macros: {
+      {%- for macro in site.mathjax.macros -%}
+      {%- if macro.nargs -%}
+      {{ macro.name }}: ["{{ macro.command }}", {{ macro.nargs }}]
+      {%- else -%}
+      {{ macro.name }}: "{{ macro.command }}"
+      {%- endif -%}
+      {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    },
+    {%- endif -%}
+    {% if site.mathjax.extensions %}
     packages: {'[+]': [
       {%- for ext in site.mathjax.extensions -%}
       '{{ ext }}'{%- unless forloop.last -%},{%- endunless -%}
