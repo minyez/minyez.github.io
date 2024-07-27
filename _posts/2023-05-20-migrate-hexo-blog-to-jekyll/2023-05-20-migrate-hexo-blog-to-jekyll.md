@@ -22,7 +22,7 @@ some brew taps (hexo itself, probably). The only one to blame is myself, being
 unable to write more frequently to adapt any breaking changes as soon as
 possible.
 
-Thirdly, landing on [Qijing's website](http://staff.ustc.edu.cn/~zqj/) triggers my
+Thirdly, landing on [Qijing's website](https://staff.ustc.edu.cn/~zqj/) triggers my
 interest in the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)
 theme with Jekyll. The theme is tidy but meanwhile very functional.
 The [Jekyll](https://jekyllrb.com/) static site generator, although "older"

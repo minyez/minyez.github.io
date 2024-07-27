@@ -65,11 +65,11 @@ y = ln(y)
 x = x * 180 / PI
 ```
 
-更多的函数可以参考官网[Xmgr: transformations](http://plasma-gate.weizmann.ac.il/Xmgr/doc/trans.html)
+更多的函数可以参考官网[Xmgr: transformations](https://plasma-gate.weizmann.ac.il/Xmgr/doc/trans.html)
 
 ## 双y轴(Double y-axis)
 
-参考这一[链接](sachinashanbhag.blogspot.com/2012/06/grace-tutorial-how-to-plot-graph-with.html), 制作包含两个不同y轴的图, 以在同一张图中展示用有相同横坐标, 但纵坐标范围不同的两组数据.
+参考这一[链接](https://sachinashanbhag.blogspot.com/2012/06/grace-tutorial-how-to-plot-graph-with.html), 制作包含两个不同y轴的图, 以在同一张图中展示用有相同横坐标, 但纵坐标范围不同的两组数据.
 
 ![ ](double_y_1.jpg)
 
