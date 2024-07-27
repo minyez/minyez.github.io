@@ -226,6 +226,38 @@ references. In this case, it is converted to markdown to
 M. Ernzerhof, Phys. Rev. Lett. **77**, 3865 (1996).
 ```
 
+To make `ox-pandoc` also handle the org-ref link, we can work around by
+converting the org-ref-style `cite:X` links to org-cite `[cite:@X]`.
+This can be done using the following snippet:
+
+``` elisp
+(defun my/org-pandoc-convert-org-ref-link-to-org-cite (BACKEND &optional subtreep)
+  "Hook function to convert org-ref cite link to org-cite cite link.
+
+Caveats:
+- also remove the possible '[]' around org-ref link
+- only work with single entry
+- will replace cite link in a code block"
+  (if (not (equal BACKEND 'pandoc)) ()
+    (goto-char (point-min))
+    (while (re-search-forward
+             "\\([=\~]\\)?\\[?\\(cite\\):&?\\([^] @\t\r\n]+\\)\\]?\\([=\~]\\)?"
+             nil t)
+      (unless (or (string= (match-string 1) "=") (string= (match-string 1) "~")
+                  (string= (match-string 4) "=") (string= (match-string 4) "~"))
+        (replace-match "[\\2:@\\3]")))))
+
+(add-to-list 'org-export-before-parsing-functions 'my/org-pandoc-convert-org-ref-link-to-org-cite)
+```
+
+Load and try to do the conversion:
+
+- `cite:PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
+- `cite:&PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
+- `[cite:&PerdewJ96PBE]`:  \[[1](#citeproc_bib_item_1)\]
+- `=cite:PerdewJ96PBE=`: `cite:PerdewJ96PBE`
+- `~[cite:&PerdewJ96PBE]~`: `[cite:&PerdewJ96PBE]`
+
 ### Footnote
 
 In org-mode footnote is written as
