@@ -433,7 +433,9 @@ way.
 ## References
 
 <span id="citeproc_bib_item_1"></span>\[1\] J. P. Perdew, K. Burke, and
-M. Ernzerhof, Phys. Rev. Lett. **77**, 3865 (1996).
+M. Ernzerhof, Phys. Rev. Lett. **77**, 3865 (1996)
+<a href="https://doi.org/10.1103/PhysRevLett.77.3865"
+target="_blank">[DOI]</a>.
 
 ------------------------------------------------------------------------
 
