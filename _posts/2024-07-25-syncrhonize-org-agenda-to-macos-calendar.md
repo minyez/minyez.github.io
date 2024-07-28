@@ -38,8 +38,7 @@ file. With Doom Emacs,
   (org-icalendar-combined-name        "MYZ org agenda")
   (org-agenda-files                   (concat org-directory "org-agenda.org"))
   (org-icalendar-combined-description "Calendar entries from Emacs org-mode")
-  ; before finding the way to set alarm per entry, use a global alarm time
-  ; 5 min before the event
+  ; Use a global alarm time, 5 min before the event
   (org-icalendar-alarm-time 5)
   ; honor noexport tag when exporting
   (org-icalendar-exclude-tags (list "noexport"))
@@ -47,8 +46,7 @@ file. With Doom Emacs,
 ```
 
 The `org-agenda.org` file contains filenames where active timestamps
-should be searched. Since I did not find a way to set alarm time per
-entry, a global alarm time is used.
+should be searched.
 
 ## Generate iCalendar file
 
@@ -56,7 +54,14 @@ In org-mode, write a heading with active timestamp in any file managed
 by `org-agenda-files`, like
 
     * Meeting <2024-07-25 10:00-11:00>
+    :PROPERTIES:
+    :APPT_WARNTIME: 10
+    :CATEGORY: Work
+    :END:
 
+The `APPT_WARNTIME` property (integer) sets the alarm time in minutes
+for each entry, following
+[org-agenda](https://orgmode.org/manual/Weekly_002fdaily-agenda.html).
 Then run the interactive command `org-icalendar-combine-agenda-files`.
 By default it dumps the entries to `~/org.ics`. The export file path can
 be customized by `org-icalendar-combined-agenda-file`.
