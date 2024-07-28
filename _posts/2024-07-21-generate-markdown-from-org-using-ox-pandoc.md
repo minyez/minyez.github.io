@@ -45,11 +45,11 @@ Internet gives me a few available approaches:
     highlighter in Jekyll useless.
 2.  `ox-gfm`: exporter for GitHub favored markdown, derived from
     `ox-md`. It can correctly export ```` ``` ```` code block, but still
-    fails to export the title.
+    does not export the title.
 3.  `ox-html`: also a built-in exporter but directly to HTML. This is a
     fundamental way to publish org-mode contents online, and has been
     used to connect org-mode and Jekyll as described in [this official
-    tutorial](https://orgmode.org/worg/org-tutorials/org-jekyll.html)).
+    tutorial](https://orgmode.org/worg/org-tutorials/org-jekyll.html).
     However, it seems rather cumbersome to take advantage of the Chirpy
     theme when posts are directly written in HTML.
 4.  `ox-hugo`: a markdown exporter oriented to the Hugo system. This
@@ -58,10 +58,10 @@ Internet gives me a few available approaches:
     `content` directory.
 5.  `ox-pandoc`: wrapper around the wonderful universal converter
     [pandoc](https://pandoc.org). It correctly handles title and code
-    blocks when exporting markdown. It also respects `export_file_name`
-    so that I can specify any location for the exported file.
+    blocks when exporting markdown. It also supports reading the
+    metadata of org file like `#+title`, `#+date`.
 
-`ox-pandoc` turns out to suit the best for my purpose.
+`ox-pandoc` turns out to suit the best for my needs.
 
 ## Configuration
 
