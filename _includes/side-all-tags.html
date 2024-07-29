@@ -1,0 +1,25 @@
+<!-- The tags list along side -->
+<!-- Style copied from trending-tags.html -->
+
+{% assign all_tags = '' | split: '' %}
+
+{% for tag in site.tags %}
+  {% assign tag_name = tag | first %}
+  {% unless all_tags contains tag_name %}
+    {% assign all_tags = all_tags | push: tag_name %}
+  {% endunless %}
+{% endfor %}
+
+{% assign sorted_tags = all_tags | sort_natural %}
+
+{% if all_tags.size > 0 %}
+  <section>
+    <h2 class="panel-heading"><a href="/tags">{{- site.data.locales[include.lang].tabs.tags -}}</a></h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      {% for t in sorted_tags %}
+        {% assign url = t | slugify | url_encode | prepend: '/tags/' | append: '/' %}
+        <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ t }}</a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
