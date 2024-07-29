@@ -234,18 +234,28 @@ This can be done using the following snippet:
 (defun my/org-pandoc-convert-org-ref-link-to-org-cite (BACKEND &optional subtreep)
   "Hook function to convert org-ref cite link to org-cite cite link.
 
+Currently it uses a naive implementation by `re-search-forward' for the conversion.
 Caveats:
-- also remove the possible '[]' around org-ref link
-- only work with single entry
-- will replace cite link in a code block"
+- only work with pandoc backend
+- only handle cite and fullcite.
+- cannot handle notes
+- also remove the possible '[]' around org-ref link"
   (if (not (equal BACKEND 'pandoc)) ()
     (goto-char (point-min))
     (while (re-search-forward
-             "\\([=\~]\\)?\\[?\\(cite\\):&?\\([^] @\t\r\n]+\\)\\]?\\([=\~]\\)?"
+             "\\([=\~]\\)?\\[?\\(cite\\|fullcite\\):&?\\([^] @\t\r\n]+\\)\\]?\\([=\~]\\)?"
              nil t)
-      (unless (or (string= (match-string 1) "=") (string= (match-string 1) "~")
+      ; do not convert those in a source code block or inline code
+      (unless (or (org-in-src-block-p)
+                  (string= (match-string 1) "=") (string= (match-string 1) "~")
                   (string= (match-string 4) "=") (string= (match-string 4) "~"))
-        (replace-match "[\\2:@\\3]")))))
+        (let ((keys  ; handle multiple keys
+                (replace-regexp-in-string "[,;]&?" ";@" (match-string 3))))
+          (cl-case (intern (match-string 2))
+                   (fullcite
+                     (format "[cite/bibentry:@%s]" keys))
+                   (t
+                     (replace-match (format "[\\2:@%s]" keys)))))))))
 
 (add-to-list 'org-export-before-parsing-functions 'my/org-pandoc-convert-org-ref-link-to-org-cite)
 ```
