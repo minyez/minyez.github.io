@@ -102,9 +102,9 @@ to
     dl.dropboxusercontent.com/XXX/org.ics?YYY&dl=1
 
 Finally in Calendar, go to `File->New Calendar Subscription` and paste
-the modified link. Remember to uncheck "remove alert" to make the alert
-work. Refresh the calendars and the entries in org-mode should appear in
-Calendar.
+the modified link. Remember to uncheck \"remove alert\" to make the
+alert work. Refresh the calendars and the entries in org-mode should
+appear in Calendar.
 
 ## Summary
 
