@@ -380,11 +380,12 @@ The block quote in HTML is
 ### GitHub flavor (GFM) or other? {#markdown-flavor}
 
 The GFM is widely used and `gfm` is a format specifically supported by
-pandoc. But one issue I have with it is that it does not export the
-custom identifier of heading when the custom ID is different from the
-slug of heading.
+pandoc. But one issue I have is that `gfm` does not export the custom
+identifier of heading when the custom ID is different from the heading
+slug.
 
-The `markdown` writer suits with the need, but have some other caveats
+Good news is that the general `markdown` writer supports writing custom
+ID as `# heading {#id}`. Bad news, however, is its own caveats:
 
 -   org-mode heading are written as `RawBlock`
 -   Tables are exported in a indented simple format.
@@ -433,7 +434,7 @@ the link in HTML format. This can be achieved by dropping the
 solved by switching off the `simple_tables` extension. This can be done
 with `ox-pandoc` by setting in the header
 
-    #+pandoc_extension: markdown-simple_tables-link_attributes
+    #+pandoc_extensions: markdown-simple_tables-link_attributes
 
 ### Subtree export
 
