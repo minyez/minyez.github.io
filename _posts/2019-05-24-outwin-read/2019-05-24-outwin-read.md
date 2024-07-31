@@ -2,7 +2,7 @@
 title: Algorithm used in outwin in WIEN2k (CN)
 date: 2019-05-24 16:14:53 +0800
 categories: [science, ]
-tags: [WIEN2k, Numerical Method, Algorithm]
+tags: [WIEN2k, Numerical method, Algorithm]
 math: true
 ---
 
