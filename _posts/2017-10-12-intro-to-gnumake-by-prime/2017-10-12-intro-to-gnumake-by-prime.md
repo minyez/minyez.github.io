@@ -2,9 +2,9 @@
 title: 用 GNU/Make 构建项目 - 以一个质数判断代码为例
 date: 2017-10-12 19:41:20 +0800
 categories: [programming, ]
-tags: [GNU/Make]
-comment: false
-math: true
+tags: [GNU/Make, C]
+comments: true
+math: false
 ---
 
 本文从编译一个简单的质数判断程序入手, 介绍如何利用 GNU/Make 方便地编译较复杂的代码项目。
@@ -151,7 +151,7 @@ objects = read_a.o isqrt.o judge_p.o main.o
 
 `make`对一系列程序的编译预定义了隐式规则，例如 C 程序编译的隐式规则为
 
-```makefile
+```
 $(CC) -c main.c $(CFLAGS) $(CPPFLAGS)
 ```
 
