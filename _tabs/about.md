@@ -19,13 +19,14 @@ My current researches focus on the development and application of advanced elect
 designs of functional materials. Below are the projects I am working on:
 
 - [FHI-aims](https://fhi-aims.org/): first-principles simulation program using numeric atom-centered orbitals.
-- [LibRPA](https://github.com/minyez/LibRPA): a toolkit for Green's function methods in localized orbital framework.
+- [LibRPA](https://github.com/minyez/LibRPA): toolkit for Green's function methods in localized orbital framework.
+- [mushroom](https://github.com/minyez/mushroom): Python package and scripts for pre- and post-processing of first-principles calculations.
 
 In my spare time I enjoy playing basketball and softball, reading humanities and exploring interesting anime.
 
 -----
 
 This site hosts some of my notes about work and daily life.
-I write and publish them in order to forze myself to organize the mind and to put them into understandable words.
-Nevertheless, they are still rough most of the time.
+I write and publish them in order to force myself to organize the mind and to put them into understandable words.
+Nevertheless, they are mostly for my use and are largely rough.
 It would be a pleasure if they were a help to someone in their confusion, rather than an addition to it.
