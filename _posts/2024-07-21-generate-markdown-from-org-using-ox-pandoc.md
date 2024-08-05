@@ -448,7 +448,8 @@ with `export_` prefix.
     :export_author: anonymous
     :export_options: toc:nil tags:nil title:t date:nil author:t
     :export_pandoc_options: shift-heading-level-by:1
-    :export_pandoc_metadata: categories:tool math:false comments:false
+    :export_pandoc_metadata: comments:true
+    :export_pandoc_metadata+: categories:tool math:false
     :END:
 
 Exporting the subtree either by `(org-pandoc-export-to-gfm nil t)` or
@@ -466,11 +467,9 @@ title: Title of my subtree
 ```
 
 This would be useful if notes are written in a single file but wants to
-be published in a series of markdown posts.
-
-One caveat is that unlike export of whole buffer, pandoc metadata
-(probably also options, not tested) does not work with multiple lines in
-subtree, where only the last line is used.
+be published in a series of markdown posts. Note that multi-line options
+and metadata have to be defined with the `<PROPERTY>+` syntax.
+Otherwise, only the last line of the same property will be recognized.
 
 ## Batch export
 
