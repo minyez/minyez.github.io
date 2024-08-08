@@ -190,14 +190,6 @@ defaults:
       # permalink: /posts/:year/:month/:day/:title.html
       permalink: /posts/:title/
   - scope:
-      path: _books # An empty string here means all files in the project
-      type: posts
-    values:
-      layout: post
-      comments: false # Enable comments in posts.
-      toc: true # Display TOC column in posts.
-      permalink: /books/:title.html
-  - scope:
       path: _drafts
     values:
       comments: false
