@@ -3,11 +3,10 @@ title: 用 GNU/Make 构建项目 - 以一个质数判断代码为例
 date: 2017-10-12 19:41:20 +0800
 categories: [programming, ]
 tags: [GNU/Make, C]
+description: 从编译一个简单的质数判断程序入手, 介绍如何利用 GNU/Make 方便地编译较复杂的代码项目。
 comments: true
 math: false
 ---
-
-本文从编译一个简单的质数判断程序入手, 介绍如何利用 GNU/Make 方便地编译较复杂的代码项目。
 
 ## 背景
 
