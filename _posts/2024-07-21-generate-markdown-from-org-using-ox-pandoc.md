@@ -272,13 +272,12 @@ This can be done using the following snippet:
 Currently it uses a naive implementation by `re-search-forward' for the conversion.
 Caveats:
 - only work with pandoc backend
-- only handle cite and fullcite.
-- cannot handle notes
-- also remove the possible '[]' around org-ref link"
+- only handle cite and fullcite
+- cannot handle notes"
   (if (not (equal BACKEND 'pandoc)) ()
     (goto-char (point-min))
     (while (re-search-forward
-             "\\([=\~]\\)?\\[?\\(cite\\|fullcite\\):&?\\([^] @\t\r\n]+\\)\\]?\\([=\~]\\)?"
+             "\\([=\~]\\)?\\[?\\[?\\(cite\\|fullcite\\):&?\\([^] @\t\r\n]+\\)\\]?\\]?\\([=\~]\\)?"
              nil t)
       ; do not convert those in a source code block or inline code
       (unless (or (org-in-src-block-p)
@@ -288,7 +287,7 @@ Caveats:
                 (replace-regexp-in-string "[,;]&?" ";@" (match-string 3))))
           (cl-case (intern (match-string 2))
                    (fullcite
-                     (format "[cite/bibentry:@%s]" keys))
+                     (replace-match (format "[cite/bibentry/bare:@%s]" keys)))
                    (t
                      (replace-match (format "[\\2:@%s]" keys)))))))))
 
@@ -302,6 +301,15 @@ Load and try to do the conversion:
 -   `[cite:&PerdewJ96PBE]`:  \[[1](#citeproc_bib_item_1)\]
 -   `=cite:PerdewJ96PBE=`: `cite:PerdewJ96PBE`
 -   `~[cite:&PerdewJ96PBE]~`: `[cite:&PerdewJ96PBE]`
+-   `fullcite:&PerdewJ96PBE`: J. P. Perdew, K. Burke, and M. Ernzerhof,
+    Phys. Rev. Lett. **77**, 3865 (1996)
+    <a href="https://doi.org/10.1103/PhysRevLett.77.3865"
+    target="_blank">[DOI]</a>.
+
+For more about citation in org-mode, the nice series by William Denton
+(the first article found
+[here](https://www.miskatonic.org/2024/01/08/org-citations-basic/)) is
+worth reading.
 
 ### Footnote
 
