@@ -5,7 +5,7 @@ categories: [programming, ]
 tags: [GNU/Make, C]
 description: 从编译一个简单的质数判断程序入手, 介绍如何利用 GNU/Make 方便地编译较复杂的代码项目。
 comments: true
-math: false
+math: true
 ---
 
 ## 背景
@@ -26,13 +26,13 @@ math: false
 产生可执行程序`prime`。注意到这里需要`math.h`中的函数`sqrt`，因此需要用`-lm`链接
 数学库。
 
-| 文件名     | 函数名    | 形参  | 功能                                 | 返回值  |
-|------------|-----------|-------|--------------------------------------|---------|
-| main.c     | `main`    |       | 流程控制                             |         |
-| read\_a.c  | `read_a`  |       | 从外部读取`a`                        | `a`; -1 |
-| isqrt.c    | `isqrt`   | `a`   | 求不大于$\sqrt{\texttt{a}}$的整数`b` |         |
-| judge\_p.c | `judge_p` | `a,b` | 循环判断`a`是否质数                  |         |
-| prime.h    |           |       | 头文件, 声明函数                     |         |
+| 文件名     | 函数名    | 形参  | 功能                                   | 返回值  |
+|------------|-----------|-------|----------------------------------------|---------|
+| main.c     | `main`    |       | 流程控制                               |         |
+| read\_a.c  | `read_a`  |       | 从外部读取`a`                          | `a`; -1 |
+| isqrt.c    | `isqrt`   | `a`   | 求不大于 $\sqrt{\texttt{a}}$ 的整数`b` |         |
+| judge\_p.c | `judge_p` | `a,b` | 循环判断`a`是否质数                    |         |
+| prime.h    |           |       | 头文件, 声明函数                       |         |
 
 ## GNU/Make 基本
 
