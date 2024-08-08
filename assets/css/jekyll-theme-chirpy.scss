@@ -10,7 +10,15 @@
 
 /* append your custom style below */
 
-// .content {
-//   /* https://www.zhangxinxu.com/wordpress/2021/02/css-line-break/ */
-//   line-break: normal;
-// }
+.content {
+  /* CJK lines break more often */
+  /* https://www.zhangxinxu.com/wordpress/2021/02/css-line-break/ */
+  line-break: loose;
+}
+
+/* always break inline code */
+code {
+  &.highlighter-rouge {
+    word-break: break-all;
+  }
+}
