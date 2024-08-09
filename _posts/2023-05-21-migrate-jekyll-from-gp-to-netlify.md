@@ -7,13 +7,15 @@ tags: [Jekyll, Netlify, GitHub, Blog]
 
 ## Introduction
 
-The Jekyll plugin [jekyll-postfiles](https://github.com/nhoizey/jekyll-postfiles)
-is handy when writing posts.
-When building, it copies files in the post directory to the right place in
+Recently I have changed from Hexo to Jekyll to generate my website, as describted
+in my [last post]({% link _posts/2023-05-20-migrate-hexo-blog-to-jekyll.md %}).
+For writing post with Jekyll, the Jekyll plugin [jekyll-postfiles](https://github.com/nhoizey/jekyll-postfiles)
+is very handy. It can copy files in the post directory to the right place in
 the site build, so that image or file links, e.g. `![fig](fig.png)` in post
-markdown, works after converting to HTML. It meanwhile keeps the original
-`![](/assets/fig.png)` way to refer to assets.
-One needs to add following to `Gemfile` to install this plugin
+markdown, works after converting to HTML. This gets me rid of saving images/files
+into separate assets folder and specifying the long links. It meanwhile keeps the
+original `![](/assets/fig.png)` way to refer to assets. One needs to add following
+to `Gemfile` to install this plugin
 ```ruby
 source "https://rubygems.org"
 
