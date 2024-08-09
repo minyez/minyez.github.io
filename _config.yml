@@ -176,7 +176,7 @@ collections:
     permalink: /:name
 
 # only tabs whose name is included will appear in sidebar (home always shown)
-sidebar_tabs: ["about", "posts"]
+sidebar_tabs: ["about", "posts", "publications"]
 
 defaults:
   - scope:
