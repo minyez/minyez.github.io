@@ -1,0 +1,34 @@
+---
+layout: default
+refactor: true
+panel_includes:
+  - toc
+---
+
+{% include lang.html %}
+
+<article class="px-1">
+  <header>
+    <h1 data-toc-skip>{{ page.title }}</h1>
+  </header>
+
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- published date -->
+    <span>
+      {{ site.data.locales[lang].post.posted }}
+      {% include datetime.html date=page.date tooltip=true lang=lang %}
+    </span>
+
+    <!-- lastmod date -->
+    {% if page.last_modified_at and page.last_modified_at != page.date %}
+      <span>
+        {{ site.data.locales[lang].post.updated }}
+        {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
+      </span>
+    {% endif %}
+  </div>
+</article>
