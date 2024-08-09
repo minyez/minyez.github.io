@@ -395,21 +395,21 @@ slug.
 Good news is that the general `markdown` writer supports writing custom
 ID as `# heading {#id}`. Bad news, however, is its own caveats:
 
--   org-mode heading are written as `RawBlock`
--   Tables are exported in a indented simple format.
+-   org-mode headers are written as `RawBlock`
+-   Tables are exported in an indented simple format rather than pipe
+    tables.
 -   The \"verbatim\" class, added to the `pandoc.Code` object when
     parsing inline verbatim (`=verb=`) to AST, is exported as
     `` `verb`{.verbatim} ``. Unfortunately, it cannot be rendered by
     kramdown, which expects `` `verb`{:.verbatim} ``.
 -   Attributes of source code block will be exported as well, but
-    kramdown fails to render it in a similar reason to the inline
-    verbatim.
+    kramdown fails to render them, similar to the inline verbatim.
 
 The last two are actually related to the way the `markdown` writer
 writes the class and attributes for the object. Before a kramdown
 variant of Markdown writer is implemented (reader discussed in
 [pandoc#2711](https://github.com/jgm/pandoc/issues/2711)), some pandoc
-filter will help on these issues.
+filter may work around these issues.
 
 ``` lua
 -- Remove RawBlock nodes like "#+export_file_name" in markdown export
