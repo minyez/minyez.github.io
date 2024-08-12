@@ -276,11 +276,11 @@ div {
         width: $code-dot-size;
         height: $code-dot-size;
         border-radius: 50%;
-        background-color: var(--code-header-muted-color);
-        box-shadow: ($code-dot-size + $code-dot-gap) 0 0
-            var(--code-header-muted-color),
-          ($code-dot-size + $code-dot-gap) * 2 0 0
-            var(--code-header-muted-color);
+        /* background-color: var(--code-header-muted-color); */
+        /* box-shadow: ($code-dot-size + $code-dot-gap) 0 0 */
+        /*     var(--code-header-muted-color), */
+        /*   ($code-dot-size + $code-dot-gap) * 2 0 0 */
+        /*     var(--code-header-muted-color); */
       }
 
       span {
