@@ -23,9 +23,31 @@ code {
   }
 }
 
-#toc {
+#toc-wrapper {
   /* Make the tocbot scrollable */
   /* See https://github.com/tscanlin/tocbot/issues/275#issuecomment-1082586517 */
-  overflow-y: auto; /* could also be 'scroll' */
+  /* Essentially simply applying to #toc should work for scrolling,
+     but it will mess up the marker (::before) before active link.
+
+     This is solved if we apply it to #toc-wrapper, but also will make the
+     marker invisible due to overflow-y. To my limited CSS knowledge, the
+     marker seems hidden behind the gray side bar. As a workaround, I remove
+     the left hanging.
+
+     This approach also makes "content head" scroll, appearance a bit different
+     from the original, and viewpoint of overflowed toc will not response when
+     scrolling in the main text at the same level.
+     But I am personally okay with these caveats, before an official solution is
+     worked out.
+   */
+  overflow-y: scroll; /* could also be 'auto' */
   height: 75vh;
+
+  ul {
+    .is-active-link {
+      &::before {
+        left: 0px;
+      }
+    }
+  }
 }
