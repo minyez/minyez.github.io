@@ -195,7 +195,7 @@ e^{i \pi} + 1 = 0
 It is possible in org-mode to cross-reference the equation by
 `eqref:eq:euler` using [org-ref](https://github.com/jkitchin/org-ref).
 Unfortunately it is neither acknowledged by markdown nor converted to
-the correct `$\eqref{eq:euler}$` syntax by `ox-pandoc`.
+the correct `\eqref{eq:euler}` syntax using `ox-pandoc`.
 
 The conversion can be done by using a pandoc filter (thanks to ChatGPT)
 
@@ -204,21 +204,25 @@ The conversion can be done by using a pandoc filter (thanks to ChatGPT)
 -- In JSON AST, from
 --   {"t":"Str","c":"eqref:eq:xxx"}
 -- to
---   {"t":"Math","c":[{"t":"InlineMath"},"\\eqref{eq:euler}"]}
---
+--   {"t":"Str","c":"\\eqref{eq:euler}"}
 -- Trailing punctuation are handled.
 function Str(el)
   local prefix = "eqref:"
   local content = el.text
   if content:sub(1, #prefix) == prefix then
     local eqref_content = content:sub(#prefix + 1)
-    local main_content, punctuation = eqref_content:match("^(.-)([%p%s]*)$")
-    local math_node = pandoc.Math('InlineMath', '\\eqref{' .. main_content .. '}')
+    -- Check for trailing punctuation
+    -- (.-) captures as few characters as possible (non-greedy)
+    -- ([%p%s]*) captures zero or more punctuation or whitespace characters
+    local label, punctuation = eqref_content:match("^(.-)([%p%s]*)$")
+    local eqref = pandoc.Str('\\eqref{' .. label .. '}')
 
     if punctuation ~= "" then
-      return {math_node, pandoc.Str(punctuation)}
+      -- Return the target node followed by a Str node with the punctuation
+      return {eqref, pandoc.Str(punctuation)}
     else
-      return math_node
+      -- Return only the target node if no relevant punctuation is found
+      return eqref
     end
   end
 
@@ -230,7 +234,7 @@ Save the filter somewhere and add it to the pandoc options
 
     #+pandoc_options: lua-filter:convert_org_ref_eqref.lua
 
-Then org-ref equation link should work: $\eqref{eq:euler}$.
+Then org-ref equation link should work: \eqref{eq:euler}.
 
 ### Citation and Bibliography
 
