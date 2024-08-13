@@ -8,13 +8,16 @@ Build memo
 # build assest, from tools/init
 # maybe necessary after sync to a new commit
 npm i && npm run build
+# or use Makefile: make npm
 
 # build gem necessary for Jekyll and the theme
 bundle config set --local path "$HOME/.gem"
 bundle
+# or use Makefile: make gem
 
 # deploy local
 bundle exec jekyll serve --livereload
+# or use Makefile: make
 ```
 
 Note
