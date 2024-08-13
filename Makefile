@@ -7,8 +7,11 @@ default:
 	bundle exec jekyll serve --livereload --trace
 	# bundle exec jekyll serve --livereload --trace --port 18028
 
-# build assets, from tools/init, maybe necessary after sync to a new commit
 build:
+	bundle exec jekyll build
+
+# build assets, from tools/init, maybe necessary after sync to a new commit
+npm:
 	npm i && npm run build
 
 # build gem necessary for Jekyll and the theme
