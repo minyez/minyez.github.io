@@ -22,3 +22,10 @@ code {
     word-break: break-all;
   }
 }
+
+#toc {
+  /* Make the tocbot scrollable */
+  /* See https://github.com/tscanlin/tocbot/issues/275#issuecomment-1082586517 */
+  overflow-y: auto; /* could also be 'scroll' */
+  height: 75vh;
+}
