@@ -24,9 +24,13 @@ title: Fortran compiler flags correspondence
 | Inter-procedure optimization | `-flto` | `-ip` | `-qip` |
 | Backtrace generation | `-fbacktrace` | `-traceback` | as ifort |
 | Check out-of-bounds | `-fcheck=bounds` | `-check bounds` | as ifort |
-| Check uninitialized variables | `-Wuninitialized` [^1] | `-check uninit` | as ifort |
+| Check uninitialized variables | `-Wuninitialized`[^1] | `-check uninit` | as ifort |
 | Check pointer issues | `-fcheck=pointer` | `-check pointers` | as ifort |
+| Use single byte as record length unit | n/a[^2] | `-assume byterecl` | as ifort |
 
 ---
 
 [^1]: Included in `-fcheck=all`
+
+[^2]: gfortran always uses 1 byte as record length unit. ifort/ifx uses
+    4-byte unit by default unless `-assume byterecl` is specified.
