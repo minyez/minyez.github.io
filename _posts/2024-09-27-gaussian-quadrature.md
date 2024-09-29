@@ -144,8 +144,8 @@ $$\begin{equation*}
 For the second term, as $x_n$ is a root of $P_N$, $P_N(x)/(x-x_n)$ must
 be a polynomial of order $N-1$. Taking derivative will lead to a
 polynomial of order $N-2$ in the integrand, which can always be
-expressed as a linear combinations using Legendre polynomials of order
-less than $N-2$. Thus the integral vanishes due to their orthogonality
+expressed as a linear combination using Legendre polynomials of order no
+more than $N-2$. Thus the integral vanishes due to their orthogonality
 with $P_N$, and
 
 $$\begin{equation}\label{eq:glq-proof-2}
