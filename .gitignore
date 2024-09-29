@@ -30,3 +30,6 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# ignore raw picture
+_posts/*/*.HEIC
