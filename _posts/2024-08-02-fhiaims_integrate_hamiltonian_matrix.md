@@ -20,7 +20,8 @@ title: Grid-based integration for Hamiltonian matrix in FHI-aims (CN)
 
 ## 问题背景 {#problem}
 
-最近需要在 FHI-aims 里实现 Kohn-Sham DFT 本征值的各项贡献，即
+最近需要在 [FHI-aims](https://fhi-aims.org) 里实现 Kohn-Sham DFT
+本征值的各项贡献，即
 
 $$\begin{equation}
 \begin{aligned}
@@ -63,7 +64,7 @@ $\varphi_{i,\mathbf{0}}$ 代表中心晶胞中的基函数 i, $\varphi_{j,\bR}$
 $A_{ij,\bR}$ 上。
 
 作为数值原子基程序，FHI-aims 采用格点积分的方法， 取离散的实空间格点
-$\{\br_{p}\}$ 来逼近积分式 $\eqref{eq:real-space-int}$.
+$\\{\br_{p}\\}$ 来逼近积分式 \eqref{eq:real-space-int}.
 
 $$\begin{equation}
 \begin{aligned}
@@ -71,7 +72,7 @@ A_{ij,\bR} \approx \sum_{p} w_{p} \varphi_{i,\mathbf{0}}(\br_{p}) A(\br_{p}) \va
 \end{aligned}
 \end{equation}$$
 
-$\{w_{p}\}$ 是每个格点的权重。总 Hamiltonian 实空间矩阵的格点积分是由
+$\\{w_{p}\\}$ 是每个格点的权重。总 Hamiltonian 实空间矩阵的格点积分是由
 `integrate_real_hamiltonian_matrix_p2`
 实现的。只需要理解它，就可依葫芦画瓢， 分别构造四个算符的矩阵形式。
 
@@ -86,8 +87,8 @@ $\{w_{p}\}$ 是每个格点的权重。总 Hamiltonian 实空间矩阵的格点�
 -   `rho_std`: 格点电子密度。
 -   `rho_gradient_std`: 格点电子密度梯度。
 -   `kinetic_density_std`: 动能密度，用于 meta-GGA.
--   `partition_tab_std`: 格点的积分权重即 $\{w_p\}$。 在 FHI-aims 里称为
-    partition function, 要区别于统计力学中的配分函数。
+-   `partition_tab_std`: 格点的积分权重即 $\\{w_p\\}$。 在 FHI-aims
+    里称为 partition function, 要区别于统计力学中的配分函数。
 -   `basis_l_max`: 各元素基函数的最大角动量值。
 -   `en_xc`: 交换关联总能量。
 -   `en_pot_xc`: 交换关联势能。
