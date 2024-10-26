@@ -7,12 +7,18 @@ documentclass: article
 header-includes:
 - 
 - 
+- 
+- 
 math: true
 tags:
 - Numerical method
 - 
 title: Gaussian quadrature
 ---
+
+
+
+
 
 
 

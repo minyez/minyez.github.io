@@ -76,8 +76,8 @@ Fix:[^3] Edit `/etc/update-manager/release-upgrade`, change
 
     Prompt=lts
 
-My current LTS version is 18.04. First run of release upgrade leads me
-to 20.04. To land in 22.04, I need to trigger it again.
+First run of release upgrade leads me to 20.04. To land in 22.04, I need
+to trigger it again.
 
 ## Install necessary software
 
@@ -114,6 +114,43 @@ sudo apt-get install -y \
   intel-oneapi-mpi intel-oneapi-mpi-devel
 # or simply install intel-basekit and intel-hpckit
 ```
+
+As of writing (2024-10-21), it installs `ifx`, `icx` and `icpx`
+compilers of version 2024.2.1. `ifort` is still included (2021.13.1),
+but will be discontinued in late 2024. The Intel MPI is also installed
+and provides MPI wrappers for all the compilers, including `mpiicc` and
+`mpiicpc`. However, they will not work because the underlying compiler
+is missing.
+
+One can pin the apt packages by writing files under
+`/etc/apt/preferences.d`. sudo is required.
+
+``` shell
+packages=(
+  intel-oneapi-common-vars
+  intel-oneapi-compiler-dpcpp-cpp
+  intel-oneapi-compiler-fortran
+  intel-oneapi-mkl intel-oneapi-mkl-devel
+)
+
+for package in ${packages[@]}; do
+  sudo cat > /etc/apt/preferences.d/$package << EOF
+Package: $package
+Pin: version 2024.2.*
+Pin-Priority: 999
+EOF
+done
+
+for package in intel-oneapi-mpi intel-oneapi-mpi-devel; do
+  sudo cat > /etc/apt/preferences.d/$package << EOF
+Package: $package
+Pin: version 2021.13.1-*
+Pin-Priority: 999
+EOF
+done
+```
+
+Then those packages will not be upgraded when `apt upgrade` is issued.
 
 ------------------------------------------------------------------------
 
