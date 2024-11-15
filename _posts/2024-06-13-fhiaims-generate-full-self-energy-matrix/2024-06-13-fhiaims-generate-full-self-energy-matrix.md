@@ -5,13 +5,13 @@ categories: [science, ]
 tags: [FHI-aims, GW, Periodic system]
 lang: en
 math: true
-comment: false
+comment: true
 ---
 
 ## Introduction
 
-In this short post I will discuss how to get the full self-energy matrix from one-shot *GW* calculation,
-expressed as below
+In this short post I will discuss how to get the full self-energy matrix from one-shot *GW* calculation.
+The matrix element in Kohn-Sham state representation is expressed as \[[1](#citeproc_bib_item_1)\]
 
 $$
 \begin{equation}
@@ -270,3 +270,10 @@ to read the matrix output files.
 Since this functionality is quite new, bug might be expected.
 Please feel free to reach me out whenever you feel necessary when trying it out.
 We can discuss how to fix it. Thanks for reading.
+
+## References
+
+<span id="citeproc_bib_item_1"></span>\[1\] X. Ren et al., Phys.
+Rev. Materials **5**, 013807 (2021)
+<a href="https://doi.org/10.1103/PhysRevMaterials.5.013807"
+target="_blank">[DOI]</a>.
