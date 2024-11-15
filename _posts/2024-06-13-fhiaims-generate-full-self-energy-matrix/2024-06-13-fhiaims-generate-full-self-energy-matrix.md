@@ -253,9 +253,9 @@ sigma_ao = s @ c @ sigma_ks @ np.conjugate(c.T) @ s
 ```
 
 Below shows the AO self-energy matrix of water molecule at the first frequency point (0.00068497i Ha)
-using the above input and light default species for water molecule.
-The input and output files are available as `example.tar.gz` ([download link](./example.tar.gz))
-The matrix is complex, but is symmetric instead of Hermitian as one expects in Hamiltonian or overlap matrix.
+using the above input and light default species. The input and output files are available in `example.tar.gz`
+([download link](./example.tar.gz)). It can be recognized that the self-energy matrix is complex,
+but is symmetric instead of Hermitian as one expects in Hamiltonian or overlap matrix.
 You can also try out some real extended system such as silicon.
 
 ![AO self-energy matrix of water molecule](Sigmac_ao_spin_1_kpt_000001_freq_001.svg)
