@@ -84,16 +84,22 @@ to trigger it again.
 ### General tools
 
 ``` shell
-sudo apt install \
-  git duf ripgrep fd-find htop fzf \
+sudo apt -y install \
+  git tig duf ripgrep fd-find htop fzf net-tools curl \
   environment-modules cmake gfortran \
   python3 python-is-python3
+```
+
+Also install GNOME tweaks to modify caps lock key and other stuff.
+
+``` shell
+sudo apt -y install gnome-tweaks
 ```
 
 ### VirtualBox
 
 ``` shell
-sudo apt install virtualbox virtualbox-ext-pack
+sudo apt -y install virtualbox virtualbox-ext-pack
 ```
 
 ### Intel oneAPI through apt
@@ -151,6 +157,24 @@ done
 ```
 
 Then those packages will not be upgraded when `apt upgrade` is issued.
+
+### Turn on SSH port
+
+``` shell
+sudo apt install openssh-server
+```
+
+Add to `/etc/ssh/sshd_config`
+
+    PubkeyAuthentication yes
+    PasswordAuthentication no
+
+### Zerotier for tunneling
+
+``` shell
+curl -s https://install.zerotier.com | sudo bash
+sudo zerotier-cli join <network-ID>
+```
 
 ------------------------------------------------------------------------
 
