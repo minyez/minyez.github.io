@@ -89,6 +89,9 @@ with `Sigmac_matr_spin_{ispin:1d}_kpt_{ikpt:06d}_freq_{ifreq:03d}.csc` being the
 `xc_matr_spin_{ispin:1d}_kpt_{ikpt:06d}.csc` the Fock or exact exchange matrix.
 
 The matrix data are stored in the ELSI CSC sparse matrix format and are in the Kohn-Sham orbital representation.
+Note that with the conventional *GW* algorithm, the calculation of self-energy matrix scales as $\mathcal{O}(N^5)$, where
+*N* is the number of atoms in the unit cell. This is one order higher than the usual *GW* calculation, which
+only computes the diagonal elements $\Sigma_{nn}$.
 
 ## Example: single water molecule in a large box
 
@@ -199,6 +202,64 @@ The lower and upper bound of the QP states can be found by searching the standar
   Actual lower/upper states to compute self-energy:            3          10
 ```
 In this case the resulted self-energ matrix should be 8 by 8, with the first index corresponding to the 3rd Kohn-Sham state.
+
+The matrices generated above are $\Sigma_{nn'}$ ,
+i. e. matrices in Kohn-Sham orbital or molecular orbital representation.
+Since the eigenvectors can depend on the choice of solver up to a phase factor (or a unitary transformation for degenerate states),
+its elements can be different when FHI-aims runs with different setup.
+A better choice for comparison is the matrices in atomic orbital basis $\Sigma_{ij}$.
+The two representations are connected by the Kohn-Sham eigenvectors
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{\Sigma}^{\rm KS} =& \mathbf{C}^{\dagger} \mathbf{\Sigma}^{\rm AO} \mathbf{C} \\
+\mathbf{\Sigma}^{\rm AO} =& \left[\mathbf{C}^{\dagger}\right]^{-1} \mathbf{\Sigma}^{\rm KS} \mathbf{C}^{-1}
+\end{aligned}
+\end{equation}
+$$
+
+For non-orthogonal basis
+
+$$
+\begin{equation}
+\mathbf{C}^{\dagger} \mathbf{S} \mathbf{C} = \mathbf{1},
+\end{equation}
+$$
+
+thus
+
+$$
+\begin{equation}\label{eq:trans-ks2ao}
+\mathbf{\Sigma}^{\rm NAO} = \mathbf{S} \mathbf{C} \mathbf{\Sigma}^{\rm KS} \mathbf{C}^{\dagger} \mathbf{S}
+\end{equation}
+$$
+
+To make the transformation complex, we need to compute $\Sigma_{nn'}$ with $n$ and $n'$ running all available Kohn-Sham states.
+This can be simply done by adding the following lines to `control.in`
+```
+state_lower_limit 1
+state_upper_limit 999999
+```
+Running the calculation will give you all inputs to perform the transformation of Eq. \eqref{eq:trans-ks2ao}
+
+```python
+import numpy as np
+
+sigma_ks = read_elsi_to_csc("./Sigmac_matr_spin_1_kpt_000001_freq_001.csc").toarray()
+c = read_elsi_to_csc("./C_spin_01_kpt_000001.csc").toarray()
+s = read_elsi_to_csc("./S_spin_01_kpt_000001.csc").toarray()
+sigma_ao = s @ c @ sigma_ks @ np.conjugate(c.T) @ s
+```
+
+Below shows the AO self-energy matrix of water molecule at the first frequency point (0.00068497i Ha)
+using the above input and light default species for water molecule.
+The input and output files are available as `example.tar.gz` ([download link](./example.tar.gz))
+The matrix is complex, but is symmetric instead of Hermitian as one expects in Hamiltonian or overlap matrix.
+You can also try out some real extended system such as silicon.
+
+![AO self-energy matrix of water molecule](Sigmac_ao_spin_1_kpt_000001_freq_001.svg)
+_AO self-energy matrix of water molecule at 0.00068497i Ha_
 
 ## Summary
 
