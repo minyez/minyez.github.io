@@ -5,11 +5,9 @@ icon: fas fa-info-circle
 order: 99
 ---
 
-<!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page. -->
-<!-- {: .prompt-tip } -->
 
-Hi, I'm is Min-Ye.
-I'm currently a postdoctorate fellow of the theory department at [Institute of Physics, Chinese Academy of Sciences](https://iop.cas.cn),
+Hi, I am Min-Ye.
+I am currently a postdoctorate fellow of the theory department at [Institute of Physics, Chinese Academy of Sciences](https://iop.cas.cn),
 and now visiting [the NOMAD Laboratory](https://nomad.fhi.mpg.de/) at the Fritz Haber Institute of [Max Planck Society](https://www.mpg.de/en)
 since February 2023.
 I obtained my doctorate degree in physical chemistry from [College of Chemistry and Molecular Engineering](https://www.chem.pku.edu.cn)

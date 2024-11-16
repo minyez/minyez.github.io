@@ -5,7 +5,7 @@ categories: [science, ]
 tags: [FHI-aims, GW, Periodic system]
 lang: en
 math: true
-comment: true
+comments: true
 ---
 
 ## Introduction
