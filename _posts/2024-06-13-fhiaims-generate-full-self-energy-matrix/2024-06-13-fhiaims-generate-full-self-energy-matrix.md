@@ -205,7 +205,7 @@ In this case the resulted self-energ matrix should be 8 by 8, with the first ind
 
 The matrices generated above are $\Sigma_{nn'}$ ,
 i. e. matrices in Kohn-Sham orbital or molecular orbital representation.
-Since the eigenvectors can depend on the choice of solver up to a phase factor (or a unitary transformation for degenerate states),
+Since the eigenvectors can depend on the choice of solver up to a phase factor (or a unitary similarity transformation for degenerate states),
 its elements can be different when FHI-aims runs with different setup.
 A better choice for comparison is the matrices in atomic orbital basis $\Sigma_{ij}$.
 The two representations are connected by the Kohn-Sham eigenvectors
