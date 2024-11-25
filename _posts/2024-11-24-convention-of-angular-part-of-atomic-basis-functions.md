@@ -57,7 +57,7 @@ functions.
 
 ## Definition
 
-Here we use Condon-Shortley (CS) convention for
+Here we use Condon-Shortley (C-S) convention for
 
 $$\begin{equation*}
 Y^m_l(\theta,\phi) = (-1)^m \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!}}
@@ -65,16 +65,21 @@ P^m_l(\cos\theta) \ee^{\ii m \phi}
 \equiv (-1)^m K^m_l P^m_l(\cos\theta) \ee^{\ii m \phi}
 \end{equation*}$$
 
-where $P^m_l$ is the associated Legendre polynomials without the
-Condon-Shortley phase $(-1)^m$, polar angles $\theta\in[0, \pi]$,
-azimuth $\phi\in[0, 2\pi)$, and
+where $P^m_l$ is the associated Legendre polynomials without the C-S
+phase $(-1)^m$,
+
+$$\begin{equation}
+P_{l}^{m}(\cos\theta)=\left(\sin\theta\right)^{m} \cfrac{d^{m}}{d (\cos\theta)^{m}}\left(P_{l}(\cos\theta)\right),
+\end{equation}$$
+
+polar angles $\theta\in[0, \pi]$, azimuth $\phi\in[0, 2\pi)$, and
 
 $$\begin{equation}
 K^m_l \equiv \sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}
 \end{equation}$$
 
-For real spherical harmonics, we use the notation of $S^m_l$. which can
-be represented by CSH by
+For real spherical harmonics, we use the notation of $S^m_l$, which can
+be represented by CSH as
 
 $$\begin{equation}
 S^m_l = \sum_{mm'} Y^{m'}_l \Delta^l_{m'm},
@@ -87,7 +92,8 @@ $$\begin{equation}
 \end{equation}$$
 
 is the unitary transformation matrix from $\\{Y^m_l\\}$ to
-$\\{S^m_l\\}$. For positive $m$, the polar angle part
+$\\{S^m_l\\}$. For positive $m$, the polar angle part has the following
+parity of $m$
 
 $$\begin{equation}
 \begin{aligned}
@@ -100,11 +106,14 @@ K^{-m}_l P^{-m}_l =& \sqrt{\frac{2l+1}{4\pi}\frac{(l+m)!}{(l-m)!}} P^{-m}_l \\
 Hence
 
 $$\begin{equation}
-Y^{-m}_l(\theta,\phi) = (-1)^m K^{-m}_l P^{-m}_l(\cos\theta) \ee^{-\ii m \phi}
-= (-1)^m \left[(-1)^m K^{m}_l P^{m}_l(\cos\theta) \ee^{\ii m \phi}\right]^{*} = (-1)^m Y^{m *}_l(\theta,\phi)
+\begin{aligned}
+Y^{-m}_l(\theta,\phi) =& (-1)^m K^{-m}_l P^{-m}_l(\cos\theta) \ee^{-\ii m \phi} \\
+=& (-1)^m \left[(-1)^m K^{m}_l P^{m}_l(\cos\theta) \ee^{\ii m \phi}\right]^{*} \\
+=& (-1)^m Y^{m *}_l(\theta,\phi)
+\end{aligned}
 \end{equation}$$
 
-From this one can derive the real and imaginary parts
+From this we can derive the real and imaginary parts
 
 $$\begin{equation}\label{eq:ylm-re}
 \begin{aligned}
@@ -112,8 +121,6 @@ $$\begin{equation}\label{eq:ylm-re}
 \frac{1}{2}\left[Y^{m}_l + (-1)^m Y^{-m}_l \right]
 \end{aligned}
 \end{equation}$$
-
-the imaginary part
 
 $$\begin{equation}\label{eq:ylm-im}
 \begin{aligned}
@@ -129,7 +136,8 @@ $$\begin{equation}\label{eq:ylm-im}
 ### FHI-aims
 
 Appendix J of [FHI-aims](https://fhi-aims.org/) manual mentions that a
-partly C-S phase is adopted in the code
+partly C-S phase is adopted in the code (computed using
+`src/basis_set/SHEval.f90`)
 
 $$\begin{equation}
 S_l^{m} =
@@ -140,7 +148,8 @@ K^m_l P^m_l(\cos\theta) & m = 0 \\
 \end{cases}
 \end{equation}$$
 
-These functions are connected to the complex ones as
+Its equivalent expression as mentioned in the comments of
+`src/external/ylm_real.f90` is
 
 $$\begin{equation}
 S_l^{m} =
@@ -151,7 +160,8 @@ Y^0_l & m = 0 \\
 \end{cases}.
 \end{equation}$$
 
-Using Eqs. \eqref{eq:ylm-re} and \eqref{eq:ylm-im}, we obtain
+Using Eqs. \eqref{eq:ylm-re} and \eqref{eq:ylm-im}, we can obtain the
+transformation from CSH
 
 $$\begin{equation}\label{eq:csh-trans-aims}
 S_l^{m} =
