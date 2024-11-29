@@ -1,6 +1,7 @@
 ---
 bibliography:
 - mypublications.bib
+date: "2024-08-09 14:30:23 +0200"
 icon:  fas fa-book-open
 layout: publications
 order: 4
@@ -48,7 +49,7 @@ toc: true
 7.  <ins>**M.-Y. Zhang**</ins> and H. Jiang,
     <a href="https://doi.org/10.1103/PhysRevB.100.205123"
     target="_blank">Electronic Band Structure of Cuprous and Silver Halides:
-    An All-Electron Gw Study</a>, Phys. Rev. B **100**, 205123 (2019).
+    An All-Electron GW Study</a>, Phys. Rev. B **100**, 205123 (2019).
 8.  <ins>**M.-Y. Zhang**</ins>, Z.-H. Cui, and H. Jiang,
     <a href="https://doi.org/10.1039/C8TA00759D" target="_blank">Relative
     Stability of FeS2 Polymorphs with the Random Phase Approximation
@@ -64,3 +65,42 @@ toc: true
     target="_blank">Strong Metal Phosphide Interactions in Core Shell
     Geometry for Enhanced Electrocatalysis</a>, Nano Lett. **17**, 2057
     (2017).
+
+## Presentations
+
+{: reversed="true"}
+1.  <ins>**M.-Y. Zhang**</ins>, \"Recent advances in periodic /GW/ method under numeric
+    atom-centered orbital framework\", <a
+    href="https://nomad.fhi.mpg.de/symposiumonmaterialstheorydrivenbyaphrodite2024"
+    target="_blank">Symposium on Materials Theory, Driven by Aphrodite, Ab
+    Initio Computations, and Artificial Intelligence</a>, Aliathon
+    Resort, Paphos, Cyprus, 2024-11-05.
+2.  <ins>**M.-Y. Zhang**</ins>, U. Herath, V. Blum, X. Ren, H. Jiang, and M. Scheffler,
+    \"All-electron periodic *GW* method with numeric atom-centered
+    orbitals: Systematic benchmark and application to
+    temperature-dependent band structure\",
+    <a href="https://berlin24.dpg-tagungen.de/" target="_blank">the DPG
+    spring meeting of the condensed matter section (SKM)</a>, TU Berlin,
+    Berlin, Germany, 2024-03-22.
+3.  <ins>**M.-Y. Zhang**</ins>, \"Development of efficient *GW* method for large-scale
+    atomistic systems\",
+    <a href="http://iop-humboldt.cpsjournals.cn/" target="_blank">the IOP–HU
+    early career researcher conference on condensed matter physics</a>,
+    IOPLY Yangtze River Delta Physics Research Center, Liyang, China,
+    2023-10-13.
+
+## Posters
+
+{: reversed="true"}
+1.  <ins>**M.-Y. Zhang**</ins>, F. Merz, U. Herath, M. Rampp, V. Blum, X. Ren, and M.
+    Scheffler, \"Electronic band structures at finite temperature with
+    unified electron-electron and electron-vibration self-energies\",
+    <a href="https://csmb.hu-berlin.de/events/hu-iop/" target="_blank">the
+    IOP-HU Early Career Researcher on Energising Materials 2024</a>,
+    CSMB at HU Berlin, Berlin, Germany, 2024-11-29.
+2.  <ins>**M.-Y. Zhang**</ins> and H. Jiang, \"Accurate band structure of iron
+    disulfide FeS2: A hard quest of advanced first-principles
+    approaches\", <a
+    href="https://www.chemsoc.org.cn/meeting/32nd/programs.php?topicid=741"
+    target="_blank">the 32nd CCS Congress (in Chinese)</a>, Zhuhai,
+    China, 2021-04-21 (Poster number: 23-P-011).
