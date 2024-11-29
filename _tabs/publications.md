@@ -69,7 +69,7 @@ toc: true
 ## Presentations
 
 {: reversed="true"}
-1.  <ins>**M.-Y. Zhang**</ins>, \"Recent advances in periodic /GW/ method under numeric
+1.  <ins>**M.-Y. Zhang**</ins>, \"Recent advances in periodic *GW* method under numeric
     atom-centered orbital framework\", <a
     href="https://nomad.fhi.mpg.de/symposiumonmaterialstheorydrivenbyaphrodite2024"
     target="_blank">Symposium on Materials Theory, Driven by Aphrodite, Ab
