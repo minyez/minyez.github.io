@@ -45,8 +45,8 @@ A_{n\bk} = \mel{\psi_{n\bk}}{\hat{A}(\bk)}{\psi_{n\bk}}
 
 $$\begin{equation}
 \begin{aligned}
-A_{ij}(\bk) = \sum_{\bR} \ee^{-\ii\bk\cdot\bR} \braket{\varphi_{i,\mathbf{0}}}{\hat{A}\varphi_{j,\bR}}
-= \sum_{\bR} \ee^{-\ii\bk\cdot\bR} A_{ij,\bR}
+A_{ij}(\bk) = \sum_{\bR} \ee^{\ii\bk\cdot\bR} \braket{\varphi_{i,\mathbf{0}}}{\hat{A}\varphi_{j,\bR}}
+= \sum_{\bR} \ee^{\ii\bk\cdot\bR} A_{ij,\bR}
 \end{aligned}
 \end{equation}$$
 
