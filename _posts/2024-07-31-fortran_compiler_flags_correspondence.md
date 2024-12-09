@@ -27,6 +27,11 @@ title: Fortran compiler flags correspondence
 | Check uninitialized variables | `-Wuninitialized`[^1] | `-check uninit` | as ifort |
 | Check pointer issues | `-fcheck=pointer` | `-check pointers` | as ifort |
 | Use single byte as record length unit | n/a[^2] | `-assume byterecl` | as ifort |
+| Adhere to value-safe optimizations for f.p. computations | `-fno-fast-math` | `-fp-model precise` | as ifort |
+| Enable stack overflow security checks | as ifort | `-fstack-protector` | as ifort |
+| Enable overflow/divide-by-zero/invalid f.p. exceptions | `-ffpe-trap=invalid,zero,overflow` | `-fpe0` | as ifort |
+| Implicit initialization to signaling NaN | `-finit-real=snan`[^3] | `-init=snan` | as ifort |
+| Control whether to implicitly initialize arrays | n/a | `-init=arrays`[^4] | as ifort |
 
 ## Remarks
 
@@ -41,7 +46,13 @@ in the Fortran Discourse.
 
 ---
 
-[^1]: Included in `-fcheck=all`
+[^1]: It warns instead of quit with error. Implicitly switched on with
+    `-fcheck=all`.
 
 [^2]: gfortran always uses 1 byte as record length unit. ifort/ifx uses
     4-byte unit by default unless `-assume byterecl` is specified.
+
+[^3]: It also applies to real and imaginary parts of complex type.
+
+[^4]: Must work with `-init=snan` or `-init=zero` to specify the initial
+    value.
