@@ -57,7 +57,7 @@ functions.
 
 ## Definition
 
-Here we use Condon-Shortley (C-S) convention for
+Here we define the CSH with the Condon-Shortley (C-S) convention
 
 $$\begin{equation*}
 Y^m_l(\theta,\phi) = (-1)^m \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!}}
@@ -78,8 +78,8 @@ $$\begin{equation}
 K^m_l \equiv \sqrt{\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}}
 \end{equation}$$
 
-For real spherical harmonics, we use the notation of $S^m_l$, which can
-be represented by CSH as
+In terms of RSH, we use $S^m_l$ for notation. RSH are obtained through a
+unitary transformation from CSH
 
 $$\begin{equation}
 S^m_l = \sum_{mm'} Y^{m'}_l \Delta^l_{m'm},
@@ -91,9 +91,8 @@ $$\begin{equation}
 \Delta^l_{m'm} = \braket{Y^{m'}_l}{S^m_l}
 \end{equation}$$
 
-is the unitary transformation matrix from $\\{Y^m_l\\}$ to
-$\\{S^m_l\\}$. For positive $m$, the polar angle part has the following
-parity of $m$
+is the transformation matrix. For positive $m$, the polar angle part has
+the following parity with respect to $m$
 
 $$\begin{equation}
 \begin{aligned}
