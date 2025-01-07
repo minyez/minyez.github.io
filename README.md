@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c431871d-54ce-4a40-8894-d2848364e94b/deploy-status)](https://app.netlify.com/sites/minyez/deploys)
 
 Personal site, forked from [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
-Synced to commit [`8280adb`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/8280adb901b9d15cc1bc18009553aae8746121d8).
+Synced to commit [`e44c048`](https://github.com/cotes2020/jekyll-theme-chirpy/tree/e44c048aef1ab3201eff05450614a32e6ce4b6bb).
 
 Build memo
 ```shell
