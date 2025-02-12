@@ -6,6 +6,10 @@ Jekyll::Hooks.register :posts, :post_init do |post|
   set_lastmod_date(post)
 end
 
+Jekyll::Hooks.register :tabs, :post_init do |tab|
+  set_lastmod_date(tab)
+end
+
 def set_lastmod_date(doc)
   commit_num = `git rev-list --count HEAD "#{ doc.path }"`
 
