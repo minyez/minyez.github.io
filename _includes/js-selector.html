@@ -54,9 +54,9 @@
 {% case page.layout %}
   {% when 'home', 'categories', 'post', 'page' %}
     {% assign js = page.layout %}
-  {% when 'publications' %}
-    {% assign js = 'post' %}
-  {% when 'archives', 'category', 'tag', 'posts' %}
+  {% when 'publications', 'posts' %}
+    {% assign js = 'page' %}
+  {% when 'archives', 'category', 'tag' %}
     {% assign js = 'misc' %}
   {% else %}
     {% assign js = 'commons' %}
