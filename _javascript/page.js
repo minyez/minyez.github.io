@@ -3,10 +3,12 @@ import {
   loadImg,
   imgPopup,
   initClipboard,
+  initToc,
   loadMermaid
 } from './modules/components';
 
 loadImg();
+initToc();
 imgPopup();
 initSidebar();
 initTopbar();
