@@ -1,4 +1,5 @@
 ---
+author: Min-Ye Zhang
 bibliography:
 - etc/bibliography.bib
 categories: science
@@ -120,7 +121,7 @@ $$\begin{equation*}
 
 Each term in the summation over $n\ne n'$ is zero as we have chosen
 $\\{x_n\\}$ be the roots of $P_{N}$ and the denominator is nonzero. The
-limit, using L\'Hospital\'s rule, is
+limit, using L'Hospital's rule, is
 
 $$\begin{equation*}
 \begin{aligned}
@@ -274,9 +275,9 @@ grids. \[[1](#citeproc_bib_item_1)\]
     Wikipedia](https://en.wikipedia.org/wiki/Gaussian_quadrature)
 -   [Legendre polynomials -
     Wikipedia](https://en.wikipedia.org/wiki/Legendre_polynomials)
--   [Gauss--Legendre quadrature -
+-   [Gauss-Legendre quadrature -
     Wikipedia](https://en.wikipedia.org/wiki/Gauss-Legendre_quadrature)
--   [`roots_legendre` --- SciPy
+-   [`roots_legendre` - SciPy
     Manual](https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.roots_legendre.html)
 
 ## References
