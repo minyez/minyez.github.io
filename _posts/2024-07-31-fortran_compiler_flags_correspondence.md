@@ -13,8 +13,8 @@ title: Fortran compiler flags correspondence
 ## Compiler vendors checked here
 
 -   gfortran: Fortran compiler for the GCC project.
--   ifort: Intel\'s classical Fortran compiler.
--   ifx: Intel\'s new Fortran compiler based on
+-   ifort: Intel's classical Fortran compiler.
+-   ifx: Intel's new Fortran compiler based on
     [LLVM](https://llvm.org/).
 
 ## List of selected flags
