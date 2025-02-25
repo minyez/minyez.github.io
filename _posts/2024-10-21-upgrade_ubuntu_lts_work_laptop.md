@@ -11,7 +11,7 @@ title: Upgrade Ubuntu LTS on a work laptop
 ## Background
 
 The HP laptop provided by the institute has decent specs (i7-10850U,
-32GB RAM, 500GB SSD), but I haven't used it much because I'm not a fan
+32GB RAM, 500GB SSD), but I haven’t used it much because I’m not a fan
 of the pre-installed Ubuntu. Recently, my CI pipeline on GitHub, which
 uses the Intel compiler on Ubuntu, started failing. To debug it, having
 a local Ubuntu environment, either as the host or in a virtual machine,
@@ -24,7 +24,7 @@ environment.
 The pre-installed Ubuntu is 18.04 LTS, which is a bit old. The one used
 in CI is 22.04 LTS. Although it is not necessary to upgrade to the
 latest since the debug will be in virtual machine, I think it is a good
-idea to upgrade when the machine is still \"clean\".
+idea to upgrade when the machine is still "clean".
 
 The upgrade follows [official
 documentation](https://ubuntu.com/server/docs/how-to-upgrade-your-release).
