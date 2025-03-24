@@ -24,3 +24,12 @@ Keynote 本身只提供当前页码，没有总页数。
 - 下标 `Ctrl CMD -`
 
 总觉得要按 `option`.
+
+## 透明度动画效果
+
+1. 如果要让动画对象最终处于不透明状态，就先在 Style 中调低它的透明度。
+2. 选取对象，在 `Animate` 的 `Action` 标签中 `Add an Effect`, 选择 Opacity.
+3. 调整透明度到最终想要的效果。
+4. 调整 Build Order 使协同改变透明度的对象
+
+[Youtube](https://www.youtube.com/watch?v=fXgcwCpiBQI)
