@@ -300,15 +300,15 @@ Caveats:
 
 Load and try to do the conversion:
 
--   `cite:PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
--   `cite:&PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
--   `[cite:&PerdewJ96PBE]`:  \[[1](#citeproc_bib_item_1)\]
--   `=cite:PerdewJ96PBE=`: `cite:PerdewJ96PBE`
--   `~[cite:&PerdewJ96PBE]~`: `[cite:&PerdewJ96PBE]`
--   `fullcite:&PerdewJ96PBE`: J. P. Perdew, K. Burke, and M. Ernzerhof,
-    Phys. Rev. Lett. **77**, 3865 (1996)
-    <a href="https://doi.org/10.1103/PhysRevLett.77.3865"
-    target="_blank">[DOI]</a>.
+- `cite:PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
+- `cite:&PerdewJ96PBE`:  \[[1](#citeproc_bib_item_1)\]
+- `[cite:&PerdewJ96PBE]`:  \[[1](#citeproc_bib_item_1)\]
+- `=cite:PerdewJ96PBE=`: `cite:PerdewJ96PBE`
+- `~[cite:&PerdewJ96PBE]~`: `[cite:&PerdewJ96PBE]`
+- `fullcite:&PerdewJ96PBE`: J. P. Perdew, K. Burke, and M. Ernzerhof,
+  Phys. Rev. Lett. **77**, 3865 (1996)
+  <a href="https://doi.org/10.1103/PhysRevLett.77.3865"
+  target="_blank">[DOI]</a>.
 
 For more about citation in org-mode, the nice series by William Denton
 (the first article found
@@ -399,15 +399,15 @@ slug.
 Good news is that the general `markdown` writer supports writing custom
 ID as `# heading {#id}`. Bad news, however, is its own caveats:
 
--   org-mode headers are written as `RawBlock`
--   Tables are exported in an indented simple format rather than pipe
-    tables.
--   The "verbatim" class, added to the `pandoc.Code` object when parsing
-    inline verbatim (`=verb=`) to AST, is exported as
-    `` `verb`{.verbatim} ``. Unfortunately, it cannot be rendered by
-    kramdown, which expects `` `verb`{:.verbatim} ``.
--   Attributes of source code block will be exported as well, but
-    kramdown fails to render them, similar to the inline verbatim.
+- org-mode headers are written as `RawBlock`
+- Tables are exported in an indented simple format rather than pipe
+  tables.
+- The "verbatim" class, added to the `pandoc.Code` object when parsing
+  inline verbatim (`=verb=`) to AST, is exported as
+  `` `verb`{.verbatim} ``. Unfortunately, it cannot be rendered by
+  kramdown, which expects `` `verb`{:.verbatim} ``.
+- Attributes of source code block will be exported as well, but kramdown
+  fails to render them, similar to the inline verbatim.
 
 The last two are actually related to the way the `markdown` writer
 writes the class and attributes for the object. Before a kramdown
