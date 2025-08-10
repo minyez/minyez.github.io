@@ -6,6 +6,7 @@ gemspec
 
 group :jekyll_plugins do
   gem 'jekyll-postfiles'
+  gem 'jekyll-twitter-plugin'
 end
 
 gem "html-proofer", "~> 5.0", group: :test
