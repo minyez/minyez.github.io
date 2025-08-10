@@ -23,7 +23,7 @@ It is a web browser extension designed to block certain websites according to di
 fixed time windows and time limit.
 
 To make LeechBlock work, I need first to set it up to make it aware of the websites to block.
-In the `Options` tab of LeechBlock, it offers 6 customizable blocking rules.
+In the `Options` tab of LeechBlock, it offers customizable blocking rules up to 30 sets.
 I name one of them as "SNS and videos", and enter the domains of relevant websites,
 either by wildcard or secondary subdomain. This is shown in Figure [1](#fig:lb_setup).
 
@@ -50,6 +50,8 @@ at the beginning and the end of the day.
 
 <img src="lb_stat.png" id="fig:lb_stat" />
 _Figure 2: LeechBlock statistics. Blurred for privacy. but the "Time Spent Per Day" as of writing was close to 7 hours ... you see the problem_
+
+<!-- {% twitter https://x.com/steve_minyez/status/1954313187290931341 align=center width=1000 maxwidth=1000 %} -->
 
 To track this daily usage, I turn to my old friend Emacs and org-mode.
 
