@@ -33,3 +33,6 @@ Thumbs.db
 
 # ignore raw picture
 _posts/*/*.HEIC
+
+# cache by jekyll-twitter-plugin
+.tweet-cache/
