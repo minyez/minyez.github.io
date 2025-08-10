@@ -40,7 +40,7 @@ I realize that the problem lies in my mind being unconscious of what I am doing.
 The block seems to add a barrier between me and the websites,
 but it is just a technical hassel rather than a comfort for the uneasy mind.
 With an old Chinese idiom "堵不如疏", *Better to channel than to block*,
-I decide to disable the block, but try to track and record my own surfing hours, which I will use to reflect my behavior and thoughts.
+I decide to disable the block, but try to track and record my own surfing hours, which I will use to reflect on my behavior and thoughts.
 
 Fortunately, I noticed the `Statistics` tab of LeechBlock.
 For each rule set, it shows the time that you have spent on the websites that match the wildcards,
@@ -55,9 +55,10 @@ To track this daily usage, I turn to my old friend Emacs and org-mode.
 
 ## Org-mode table for tracking
 
-I create the following table. The "Total start" and "Total end" columns are extracted directly from the statistics page.
+For record, I create the following table in an org-mode file.
+The "Total start" and "Total end" columns are extracted directly from the statistics page.
 "Est. Mobile" gives an estimate of non-PC-browser usage of SNS (brower and apps on mobile devices).
-"Today" column is computed from the three columns.
+"Today" column is computed from these three columns.
 
 ```example
 | Date             | Total start | Total end | Est. Mobile [h] | Today [h] |
@@ -115,5 +116,7 @@ Leading + or - and surrounding whitespace are allowed."
     (* sign (+ (* h 3600) (* m 60) sec))))
 ```
 
-The workflow will then be to check the LeechBlock statistics in the morning and night routines, and execute the table block.
+Further automation may be to communicate with LeechBlock from within Emacs.
+But this will need more development time, which I shall refrain for new.
+Current workflow would then be to check the LeechBlock statistics in the morning and night routines, and execute the table block.
 Let's see how I will proceed in this direction.
