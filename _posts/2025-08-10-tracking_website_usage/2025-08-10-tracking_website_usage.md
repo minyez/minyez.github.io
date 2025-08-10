@@ -5,7 +5,7 @@ categories: [tool, ]
 tags: [Emacs, org-mode, SNS, LeechBlock]
 lang: en
 math: false
-comment: true
+comments: true
 ---
 
 ## Problem
