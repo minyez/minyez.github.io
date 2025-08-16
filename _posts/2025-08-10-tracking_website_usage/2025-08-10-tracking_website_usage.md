@@ -61,12 +61,16 @@ For record, I create the following table in an org-mode file.
 The "Total start" and "Total end" columns are extracted directly from the statistics page.
 "Est. Mobile" gives an estimate of non-PC-browser usage of SNS (brower and apps on mobile devices).
 "Today" column is computed from these three columns.
+The last row displays the average hours of all dates with a record.
 
 ```example
+#+name: tab-sns-clocks
 | Date             | Total start | Total end | Est. Mobile [h] | Today [h] |
 |------------------+-------------+-----------+-----------------+-----------|
-| [2025-08-10 Sun] |   146:30:02 | 147:13:22 |             1.0 |      1.72 |
-#+tblfm: $5='(+ (my/time-diff-hours $3 $2) (string-to-number $4));%.2f
+| [2025-08-10 Sun] |   146:30:02 | 147:13:22 |             1.0 |       1.7 |
+|------------------+-------------+-----------+-----------------+-----------|
+|                  |             |           |                 |       1.7 |
+#+tblfm: $5='(+ (my/time-diff-hours $3 $2) (string-to-number $4));%.1f::@>$5=vmean(@I..@-1);%.1f
 ```
 
 Computing "Today" manually is easy but boring. As always, this can be done programmatically
@@ -118,7 +122,64 @@ Leading + or - and surrounding whitespace are allowed."
     (* sign (+ (* h 3600) (* m 60) sec))))
 ```
 
+The mean value is computed by the internal function `vmean` provided by org-table.
+
 Further automation may be to communicate with LeechBlock from within Emacs.
 But this will need more development time, which I shall refrain for new.
 Current workflow would then be to check the LeechBlock statistics in the morning and night routines, and execute the table block.
 Let's see how I will proceed in this direction.
+
+## Visualization
+
+To provide a better view of the trend, I turn to matplotlib to plot the daily usage against date.
+The following code is used
+
+```python
+def plot(tbl, figname: str):
+    import datetime as dt
+    import matplotlib.pyplot as plt
+    import matplotlib.dates as mdates
+
+    # strip header and overall average
+    dates = [x[0][1:11] for x in reversed(tbl[1:-1])]
+    x = [dt.datetime.strptime(d,'%Y-%m-%d').date() for d in dates]
+    y = [x[4] for x in reversed(tbl[1:-1])]
+
+    fig, ax = plt.subplots(1, 1)
+
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+    ax.xaxis.set_major_locator(mdates.DayLocator())
+    ax.plot(x, y, marker=".", color="k")
+
+    ax.set_ylabel("Hours per day [h]")
+    fig.autofmt_xdate()
+    fig.savefig(figname,
+                dpi=300,
+                bbox_inches='tight',
+                pad_inches=0.1)
+```
+
+Here `tbl` is a list, as which the org-mode table is parsed.
+The above code is surrounded by a source code block named as `func-plot`.
+Then the following block is added for org-babel to run and display the output figure.
+```
+#+name: run-plot
+#+header: :noweb strip-export
+#+header: :var tbl=tab-sns-clocks figname="sns-plot.png"
+#+begin_src python :results file :exports both
+<<func-plot>>
+plot(tbl, figname)
+return figname
+#+end_src
+
+#+name: fig-plot
+#+attr_org: :width 600
+#+results: run-plot
+```
+Running the code will give figure [3](#fig:sns_plot) and
+add link to the figure under the `#+results` section.
+Note that `figname` must be returned to make sure that the correct file link is inserted.
+
+<img src="sns_plot.png" id="fig:sns_plot" />
+_Figure 3: Sample output figure_
+
