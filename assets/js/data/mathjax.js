@@ -8,34 +8,22 @@ layout: compress
 {%- endcomment -%}
 
 MathJax = {
-  {%- if site.mathjax.extensions -%}
   loader: {load: [
-    {%- for ext in site.mathjax.extensions -%}
-    '[tex]/{{ ext }}'{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
+    '[tex]/physics'
   ]},
-  {%- endif -%}
   tex: {
     {%- comment %} macros {% endcomment -%}
-    {%- if site.mathjax.macros -%}
     macros: {
-      {%- for macro in site.mathjax.macros -%}
-      {%- if macro.nargs -%}
-      {{ macro.name }}: ["{{ macro.command }}", {{ macro.nargs }}]
-      {%- else -%}
-      {{ macro.name }}: "{{ macro.command }}"
-      {%- endif -%}
-      {%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
+      bvec: ["\\mathbf{#1}", 1],
+      br: "\\bvec{r}",
+      bR: "\\bvec{R}",
+      bk: "\\bvec{k}",
+      ii: "\\mathrm{i}",
+      ee: "\\mathrm{e}"
     },
-    {%- endif -%}
-    {% if site.mathjax.extensions %}
     packages: {'[+]': [
-      {%- for ext in site.mathjax.extensions -%}
-      '{{ ext }}'{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
+      'physics'
     ]},
-    {%- endif -%}
     {%- comment -%} start/end delimiter pairs for in-line math {%- endcomment -%}
     inlineMath: [
       ['$', '$'],
