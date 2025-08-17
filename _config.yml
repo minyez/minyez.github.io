@@ -223,30 +223,6 @@ exclude:
   - "*.config.js"
   - "package*.json"
 
-mathjax:
-  extensions:
-    - physics
-  macros:
-    - bvec:
-      name: bvec
-      command: "\\\\mathbf{#1}"
-      nargs: 1
-    - br:
-      name: br
-      command: "\\\\bvec{r}"
-    - bR:
-      name: bR
-      command: "\\\\bvec{R}"
-    - bk:
-      name: bk
-      command: "\\\\bvec{k}"
-    - ii:
-      name: ii
-      command: "\\\\mathrm{i}"
-    - ee:
-      name: ee
-      command: "\\\\mathrm{e}"
-
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
