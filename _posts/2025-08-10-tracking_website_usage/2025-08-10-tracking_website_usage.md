@@ -141,11 +141,15 @@ as [pointed out](https://github.com/proginosko/LeechBlockNG/issues/630#issuecomm
 
 One tricky point is that the database for extension storage dumped by Firefox adopts the
 [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) format,
-which encodes both keys and values. So it cannot be handled as straightforwardly as the Zotero one.
-Fortunately, the nice [moz-idb-edit](https://gitlab.com/ntninja/moz-idb-edit) package provides all necessary tooling to handle IndexDB.
+which have both keys and values encoded. Specifically, the data values are Structure Clone compressed in the [snappy](https://en.wikipedia.org/wiki/Snappy_(compression)) format.
+So the database cannot be handled as straightforwardly as the Zotero one.
+Fortunately, the nice [moz-idb-edit](https://gitlab.com/ntninja/moz-idb-edit) package provides all necessary tooling I need to handle IndexDB.
+It uses [cramjam](https://github.com/milesgranger/cramjam) to decompress the Structure Clone object.
+
 By adopting the command line tool moz-idb-edit provides, I create the following script to extract the total time data and convert it to the required format.
 
 ```python
+import sqlite3
 import pathlib
 from mozidbedit import mozidb, IDBObjectWrapper
 import jmespath
@@ -163,10 +167,14 @@ storage_path = profile_dir / "storage" / "default"
 ctx_id = "4294967295"
 db_path = storage_path / f"moz-extension+++{ext_uuid}^userContextId={ctx_id}" / "idb" / "3647222921wleabcEoxlt-eengsairo.sqlite"
 
-with mozidb.IndexedDB(db_path) as conn:
-    value = jmespath.search(key_name, IDBObjectWrapper(conn))
-    # total time since start, in seconds, rounded to lower
-    secs_total = int(value[1])
+try:
+   with mozidb.IndexedDB(db_path) as conn:
+       value = jmespath.search(key_name, IDBObjectWrapper(conn))
+       # total time since start, in seconds, rounded to lower
+       secs_total = int(value[1])
+except sqlite3.OperationalError:
+    # case that the database is locked
+    secs_total = 0
 
 # Convert to %H:%m:%S format
 hours = secs_total // 3600
@@ -207,11 +215,12 @@ def plot(tbl, figname: str):
 
     fig, ax = plt.subplots(1, 1)
 
+    interval = max(1, int(x[-1].day - x[0].day) // 6)
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=interval))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
-    ax.xaxis.set_major_locator(mdates.DayLocator())
-    ax.plot(x, y, marker=".", color="k")
+    ax.plot(x, y, marker="o", color="k")
 
-    ax.set_ylabel("Hours per day [h]")
+    ax.set_ylabel("SNS usage per day [h]")
     fig.autofmt_xdate()
     fig.savefig(figname,
                 dpi=300,
@@ -225,7 +234,7 @@ Then the following block is added for org-babel to run and display the output fi
 ```
 #+name: run-plot
 #+header: :noweb strip-export
-#+header: :var tbl=tab-sns-clocks figname="sns-plot.png"
+#+header: :var tbl=tab-sns-clocks figname="sns_plot.png"
 #+begin_src python :results file :exports both
 <<func-plot>>
 plot(tbl, figname)
