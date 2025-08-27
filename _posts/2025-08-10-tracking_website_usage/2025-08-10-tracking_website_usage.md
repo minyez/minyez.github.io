@@ -124,7 +124,7 @@ Leading + or - and surrounding whitespace are allowed."
 
 The mean value is computed by the internal function `vmean` provided by org-table.
 
-## Statistics extraction from LeechBlock NG IndexDB database
+## Statistics extraction from LeechBlock NG IndexedDB database
 
 A workflow would be to manually check the LeechBlock statistics in the morning and night routines, record in the fields and execute the table block.
 But there is room for automation. The starting time should just be the ending time of the last day.
@@ -143,7 +143,7 @@ One tricky point is that the database for extension storage dumped by Firefox ad
 [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) format,
 which have both keys and values encoded. Specifically, the data values are Structure Clone compressed in the [snappy](https://en.wikipedia.org/wiki/Snappy_(compression)) format.
 So the database cannot be handled as straightforwardly as the Zotero one.
-Fortunately, the nice [moz-idb-edit](https://gitlab.com/ntninja/moz-idb-edit) package provides all necessary tooling I need to handle IndexDB.
+Fortunately, the nice [moz-idb-edit](https://gitlab.com/ntninja/moz-idb-edit) package provides all necessary tooling I need to handle IndexedDB.
 It uses [cramjam](https://github.com/milesgranger/cramjam) to decompress the Structure Clone object.
 
 By adopting the command line tool moz-idb-edit provides, I create the following script to extract the total time data and convert it to the required format.
@@ -183,7 +183,7 @@ mins, secs = secs_total // 60, secs_total % 60
 print(f"{hours}:{mins:02d}:{secs:02d}")
 ```
 
-This script is saved as `extract_lb_stat.py`.
+This script is saved as `extract_lb_stat.py` and put under a directory included in the `PATH` environment variable.
 The last step is to add the table formula to fill in the second and third column cells in the first data row.
 ```diff
   #+name: tab-sns-clocks
@@ -252,3 +252,5 @@ Note that `figname` must be returned to make sure that the correct file link is 
 <img src="sns_plot.png" id="fig:sns_plot" />
 _Figure 3: Sample output figure_
 
+It shows that I do spend an increasing amount of time at SNS/video websites after getting back from a trip,
+unfortunately. Well, something must be done then ...
