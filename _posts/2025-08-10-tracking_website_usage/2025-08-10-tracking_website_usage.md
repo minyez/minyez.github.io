@@ -11,7 +11,7 @@ comments: true
 ## Problem
 
 Recently I have been increasingly relying on social network service (SNS) and video sites
-to check news or get relief from day to day stress. However, many have claimed that news and SNS
+to check news or get relief from day to day stress. However, it has been claimed that news and SNS
 is actually one important source of pressure and anxiety.
 Thus I started my attempt to get rid of those sites.
 
@@ -215,13 +215,15 @@ def plot(tbl, figname: str):
 
     fig, ax = plt.subplots(1, 1)
 
-    interval = max(1, int(x[-1].day - x[0].day) // 6)
+    # Adaptive interval to use reasonable number of tick marks
+    interval = max(1, (x[-1] - x[0]).days // 6)
     ax.xaxis.set_major_locator(mdates.DayLocator(interval=interval))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
     ax.plot(x, y, marker="o", color="k")
 
-    ax.set_ylabel("SNS usage per day [h]")
     fig.autofmt_xdate()
+    ax.set_ylabel("SNS usage per day [h]")
+
     fig.savefig(figname,
                 dpi=300,
                 bbox_inches='tight',
