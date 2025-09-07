@@ -237,6 +237,10 @@ main {
     overflow-x: auto;
     border-spacing: 0;
 
+    /* centering table */
+    margin-left:auto;
+    margin-right:auto;
+
     thead {
       border-bottom: solid 2px rgb(210 215 217 / 75%);
 
