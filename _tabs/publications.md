@@ -92,20 +92,26 @@ toc: true
 ## Presentations
 
 {: reversed="true"}
-1.  <ins>**M.-Y. Zhang**</ins>, \"Recent advances in periodic *GW* method under numeric
+1.  <ins>**M.-Y. Zhang**</ins>, M. Scheffler, and X. Ren, \"Temperature-dependent
+    electronic band structure with all-electron many-body *GW* method\",
+    <a href="https://nomad-laboratory.de/nomad_international_ws_juist_2025"
+    target="_blank">International Workshop on First-principles and
+    Artificial-Intelligence Methods for Materials</a>, Juist, Germany,
+    2025-09-18.
+2.  <ins>**M.-Y. Zhang**</ins>, \"Recent advances in periodic *GW* method under numeric
     atom-centered orbital framework\", <a
     href="https://nomad.fhi.mpg.de/symposiumonmaterialstheorydrivenbyaphrodite2024"
     target="_blank">Symposium on Materials Theory, Driven by Aphrodite, Ab
     Initio Computations, and Artificial Intelligence</a>, Aliathon
     Resort, Paphos, Cyprus, 2024-11-05.
-2.  <ins>**M.-Y. Zhang**</ins>, U. Herath, V. Blum, X. Ren, H. Jiang, and M. Scheffler,
+3.  <ins>**M.-Y. Zhang**</ins>, U. Herath, V. Blum, X. Ren, H. Jiang, and M. Scheffler,
     \"All-electron periodic *GW* method with numeric atom-centered
     orbitals: Systematic benchmark and application to
     temperature-dependent band structure\",
     <a href="https://berlin24.dpg-tagungen.de/" target="_blank">the DPG
     spring meeting of the condensed matter section (SKM)</a>, TU Berlin,
     Berlin, Germany, 2024-03-22.
-3.  <ins>**M.-Y. Zhang**</ins>, \"Development of efficient *GW* method for large-scale
+4.  <ins>**M.-Y. Zhang**</ins>, \"Development of efficient *GW* method for large-scale
     atomistic systems\",
     <a href="http://iop-humboldt.cpsjournals.cn/" target="_blank">the IOP–HU
     early career researcher conference on condensed matter physics</a>,
