@@ -1,9 +1,9 @@
 ---
-title: Spin-orbit-couping calculation using LAPWSO in WIEN2k (CN)
+title: Spin-orbit-coupling calculation using LAPWSO in WIEN2k (CN)
 date: 2019-05-07 17:00:00 +0800
 updated: 2019-05-07 17:00:00
 categories: science
-tags: [WIEN2k, spin-orbit couping, DFT]
+tags: [WIEN2k, spin-orbit coupling, DFT]
 comments: true
 toc: true
 math: true
