@@ -3,7 +3,7 @@ title: 用 pandoc 将 markdown 转化为 pdf
 date: 2019-01-02 15:28:44 +0800
 tags: 
 - pandoc
-- latex
+- LaTeX
 categories: tool
 comments: true
 description: 基于 html 和 latex 两种转换中介实现 markdown 到 pdf 渲染

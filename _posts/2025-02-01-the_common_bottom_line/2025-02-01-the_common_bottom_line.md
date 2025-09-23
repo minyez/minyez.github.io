@@ -5,7 +5,7 @@ comments: false
 date: "2025-02-01 21:02:33 +0800"
 lang: zh-CN
 math: false
-tags: Essay Politics
+tags: essay politics
 title: 秦晖《共同的底线》
 ---
 

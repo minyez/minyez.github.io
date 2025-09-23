@@ -19,8 +19,8 @@ tags:
 - FHI-aims
 - PySCF
 - ABACUS
-- Spherical harmonics
-- Atomic orbitals
+- spherical harmonics
+- atomic orbitals
 title: Convention of angular part of atomic basis functions
 ---
 
@@ -172,14 +172,14 @@ Y^0_l & m = 0 \\
 \end{equation}$$
 
 Basis functions in the same shell and *l* channel are aligned with
-ascending azimuth quantum number, i. e. -*l*, -(*l*-1), ..., -1, 0, 1,
-2, ..., *l*.
+ascending azimuth quantum number, i. e. -*l*, -(*l*-1), …, -1, 0, 1, 2,
+…, *l*.
 
 ### ABACUS
 
 The real spherical harmonics in
 [ABACUS](https://abacus.ustc.edu.cn/main.htm) are defined as (from Sec.
-3.2.1 of Chen Liao\'s thesis)
+3.2.1 of Chen Liao's thesis)
 
 $$\begin{equation}\label{eq:csh-trans-abacus}
 S^m_l =
@@ -193,7 +193,7 @@ Y_l^0 & m = 0 \\
 Comparing with \eqref{eq:csh-trans-aims}, we can see that RSH with
 $m\ge0$ are the same in ABACUS and FHI-aims, but those with $m<0$ differ
 by $(-1)^m$. Furthermore, RSH in ABACUS are stored in the order of 0, 1,
--1, 2, -2, ..., which is different from FHI-aims.
+-1, 2, -2, …, which is different from FHI-aims.
 
 ### OpenMX
 
@@ -249,7 +249,7 @@ The convention of the solid spherical harmonics in ORCA is documented
 It seems to share the same order as ABACUS, but the phase and
 transformation matrix from CSH are not clear at first glance.
 [MOKIT](https://gitlab.com/jxzou/mokit/-/blob/master/mokit/lib/py2orca.py)
-provides an `py2orca` API to call ORCA\'s utility program
+provides an `py2orca` API to call ORCA's utility program
 [`orca_2mkl`](https://www.faccts.de/docs/orca/6.0/manual/contents/detailed/utilities.html#orca-2mkl-old-molekel-as-well-as-molden-inputs).
 To fully understand the order and phase convention, I am afraid that one
 has to dive into this tool.

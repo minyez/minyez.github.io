@@ -2,7 +2,7 @@
 title: fiddle-proof and procrastination (CN)
 date: 2020-07-19 16:56:37 +0800
 categories: [comment, ]
-tags: [Note taking, TaskPaper, org-mode, GTD]
+tags: [note taking, TaskPaper, org-mode, GTD]
 comment: false
 math: true
 ---

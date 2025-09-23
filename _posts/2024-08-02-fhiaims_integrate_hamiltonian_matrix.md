@@ -12,7 +12,7 @@ header-includes:
 math: true
 tags:
 - FHI-aims
-- Grid-based integration
+- grid-based integration
 title: Grid-based integration for Hamiltonian matrix in FHI-aims (CN)
 ---
 

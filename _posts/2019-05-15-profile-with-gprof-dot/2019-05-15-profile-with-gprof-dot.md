@@ -5,7 +5,7 @@ tags:
 - gprof
 - Fortran
 - Valgrind
-- Call graph
+- call graph
 categories: tool
 comments: true
 math: true
