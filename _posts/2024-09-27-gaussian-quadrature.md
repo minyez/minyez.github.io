@@ -12,7 +12,7 @@ header-includes:
 - 
 math: true
 tags:
-- Numerical method
+- numerical method
 - 
 title: Gaussian quadrature
 ---

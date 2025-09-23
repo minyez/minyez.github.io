@@ -15,7 +15,7 @@ header-includes:
 - 
 math: true
 tags:
-- Atomic orbitals
+- atomic orbitals
 - Fourier transform
 title: Fourier interpolation for matrices in atomic basis
 ---
@@ -131,10 +131,10 @@ same for the whole matrix $\mathbf{A}$. To illustrate, we look at a
 [1](#fig:bvk_IJ_naive). The unit cell is a square one, and contains 4
 atoms with fractional coordinates
 
--   `I: (0.15, 0.10)`
--   `J: (0.90, 0.70)`
--   `K: (0.60, 0.40)`
--   `L: (0.90, 0.30)`
+- `I: (0.15, 0.10)`
+- `J: (0.90, 0.70)`
+- `K: (0.60, 0.40)`
+- `L: (0.90, 0.30)`
 
 The BvK cell is chosen to have `(0,0)` cell at its center, marked by the
 blue square. The BvK super cell then contains unit cells $(n_1, n_2)$

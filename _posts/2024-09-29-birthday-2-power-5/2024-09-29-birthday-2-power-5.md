@@ -2,7 +2,7 @@
 title: 写在第 2<sup>5</sup> 个生日时
 date: 2024-09-29 22:14:51 +0200
 categories: [comment,]
-tags: [Life]
+tags: [life]
 math: false
 comment: false
 ---

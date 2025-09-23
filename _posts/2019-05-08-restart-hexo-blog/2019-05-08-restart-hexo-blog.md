@@ -2,7 +2,7 @@
 title: 关于重启这个博客的思考 (CN)
 date: 2019-05-08 01:50:24 +0800
 categories: [comment,]
-tags: [Blog]
+tags: [blogging,]
 ---
 
 在经历了草稿里的一些乌龙后, Hexo 又能正常工作了.

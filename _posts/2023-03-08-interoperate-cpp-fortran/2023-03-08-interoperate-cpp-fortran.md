@@ -2,7 +2,7 @@
 title: "Interoperate C++ and Fortran: Call Fortran from C++"
 date: 2023-03-08 19:52:57 +0100
 categories: [programming, ]
-tags: [Cpp, Fortran, Build, Hybrid programming]
+tags: [Cpp, Fortran, compilation, hybrid programming]
 ---
 
 
