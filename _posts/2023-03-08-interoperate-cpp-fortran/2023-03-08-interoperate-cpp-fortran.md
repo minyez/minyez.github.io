@@ -206,6 +206,7 @@ end function
 
 The makefile is the same.
 We now compile and run the code. The answer is correct.
+
 ![with array](result_with_array.png)
 
 ## Case 3: subroutines involving Fortran dynamical array
