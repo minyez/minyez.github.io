@@ -17,6 +17,7 @@ math: true
 tags:
 - atomic orbitals
 - Fourier transform
+media_subpath: .
 title: Fourier interpolation for matrices in atomic basis
 ---
 

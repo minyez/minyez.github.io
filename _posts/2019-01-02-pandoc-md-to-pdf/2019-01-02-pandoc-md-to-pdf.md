@@ -7,6 +7,7 @@ tags:
 categories: tool
 comments: true
 description: 基于 html 和 latex 两种转换中介实现 markdown 到 pdf 渲染
+media_subpath: .
 ---
 
 需求之一来自于最近开始将读文献和看日语原版漫画时遇到的单词和用例记录在一个 markdown 笔记里.

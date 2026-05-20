@@ -4,6 +4,7 @@ date: 2019-07-31 20:14:19 +0800
 categories: [tool, ]
 tags: [XmGrace]
 math: true
+media_subpath: .
 ---
 
 以下的操作均可以在 [qtgrace](https://sourceforge.net/projects/qtgrace/) 下实现.

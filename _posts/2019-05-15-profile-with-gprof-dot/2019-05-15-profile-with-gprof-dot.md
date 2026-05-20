@@ -10,6 +10,7 @@ categories: tool
 comments: true
 math: true
 description: 简要介绍如何基于 gprof 或 Valgrind 的性能分析数据, 使用 gprof2dot 和 Graphviz 制作 Fortran 程序的调用图, 以便对 Fortran 程序进行调试和优化.
+media_subpath: .
 ---
 
 ## 背景

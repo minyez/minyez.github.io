@@ -7,6 +7,7 @@ tags: [WIEN2k, spin-orbit coupling, DFT]
 comments: true
 toc: true
 math: true
+media_subpath: .
 ---
 
 本文介绍 WIEN2k 中自旋非极化下通过 LAPWSO 考虑自旋轨道耦合(SOC)效应的第一性原理

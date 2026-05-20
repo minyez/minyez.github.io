@@ -5,6 +5,7 @@ categories: [comment,]
 tags: [life]
 math: false
 comment: false
+media_subpath: .
 ---
 
 从人生的某个节点开始，时间的流逝似乎逐渐快了起来。

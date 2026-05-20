@@ -6,6 +6,7 @@ tags: [FHI-aims, GW, periodic system]
 lang: en
 math: true
 comments: true
+media_subpath: .
 ---
 
 ## Introduction

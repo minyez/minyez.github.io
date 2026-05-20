@@ -7,6 +7,7 @@ tags:
 - pyecharts
 categories: tool
 description: 以会议报告人所在机构的分布为例, 介绍如何基于 pyecharts 制作地理分布图.
+media_subpath: .
 ---
 
 ## 前言

@@ -3,6 +3,7 @@ title: 「重い腰を上げる」 (CN)
 date: 2023-05-21 23:21:58 +0200
 categories: [comment, ]
 tags: [comics, Japanese, Chinese]
+media_subpath: .
 ---
 
 读日版《葬送的芙莉莲》时注意到了「重い腰を上げる」这个表达。

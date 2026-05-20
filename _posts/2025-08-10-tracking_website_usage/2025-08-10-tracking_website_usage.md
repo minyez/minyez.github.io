@@ -6,6 +6,7 @@ tags: [Emacs, org-mode, SNS, LeechBlock]
 lang: en
 math: false
 comments: true
+media_subpath: .
 ---
 
 ## Problem
