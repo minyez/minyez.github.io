@@ -6,6 +6,7 @@ icon:  fas fa-book-open
 layout: publications
 order: 4
 toc: true
+math: true
 ---
 
 
@@ -99,7 +100,7 @@ toc: true
 {: reversed="true"}
 1.  H. Gong, <ins>**M.-Y. Zhang**</ins>, P. Lin, B. Jia, Z. Guan, L. He, and X. Ren,
     *<a href="https://arxiv.org/abs/2605.11512" target="_blank"><span
-    class="math inline">\(G^0W^0\)</span> Implementation Based on the
+    class="math inline">\\(G^0W^0\\)</span> Implementation Based on the
     Pseudopotential and Numerical-Atomic-Orbital Basis-Set Framework:
     Algorithms and Benchmarks</a>*, arXiv:2605.11512.
 2.  <ins>**M.-Y. Zhang**</ins>, P. Lin, R. Shi, and X. Ren,
