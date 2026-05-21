@@ -1,0 +1,145 @@
+@use '../abstracts/breakpoints' as bp;
+@use '../abstracts/variables' as v;
+@use '../abstracts/placeholders';
+
+.gallery-empty {
+  margin-top: 2rem;
+}
+
+#gallery-list {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+
+  @include bp.md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-card {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    color: inherit;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+
+    @extend %rounded;
+
+    &:hover {
+      text-decoration: none;
+
+      img {
+        transform: scale(1.025);
+      }
+    }
+  }
+
+  .gallery-card-cover {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--img-bg);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+  }
+
+  .gallery-card-body {
+    padding: 1rem;
+  }
+
+  .gallery-card-title {
+    color: var(--heading-color);
+    font-size: 1.2rem;
+    margin: 0 0 0.55rem;
+
+    @extend %text-ellipsis;
+  }
+
+  .gallery-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    color: var(--text-muted-color);
+    font-size: 0.85rem;
+  }
+}
+
+.gallery-collection {
+  .gallery-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .gallery-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1.25rem;
+  }
+
+  .gallery-notes {
+    margin-bottom: 2rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+
+    @include bp.md {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+
+  .gallery-photo-item {
+    margin: 0;
+  }
+
+  .gallery-photo {
+    display: block;
+
+    &:hover {
+      img {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  .gallery-photo-frame {
+    display: block;
+    aspect-ratio: var(--gallery-ratio, 4 / 3);
+    overflow: hidden;
+    background: var(--img-bg);
+
+    @extend %rounded;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+  }
+
+  figcaption {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    color: var(--text-muted-color);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-top: 0.45rem;
+  }
+
+  .gallery-photo-map {
+    flex: none;
+    color: inherit;
+
+    &:hover {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+  }
+}

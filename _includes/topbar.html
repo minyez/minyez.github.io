@@ -28,6 +28,13 @@
               <span>{{ page.title }}</span>
             {% endif %}
 
+          {% elsif page.collection == 'galleries' and item == 'gallery' %}
+            <span>
+              <a href="{{ '/gallery/' | relative_url }}">
+                {{- site.data.locales[include.lang].tabs.gallery | default: 'Gallery' -}}
+              </a>
+            </span>
+
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
               <a href="{{ item | append: '/' | relative_url }}">
@@ -50,6 +57,8 @@
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
+      {% elsif page.collection == 'galleries' %}
+        {{- site.data.locales[include.lang].tabs.gallery | default: 'Gallery' -}}
       {% else %}
         {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
       {% endif %}

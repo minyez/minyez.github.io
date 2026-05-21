@@ -34,5 +34,12 @@ Thumbs.db
 # ignore raw picture
 _posts/*/*.HEIC
 
+# gallery collection metadata
+_galleries/*.yaml
+_galleries/*.yml
+
+# drafts
+_posts/[a-zA-Z]*
+
 # cache by jekyll-twitter-plugin
 .tweet-cache/

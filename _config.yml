@@ -185,9 +185,13 @@ collections:
   tabs:
     output: true
     sort_by: order
+  galleries:
+    output: true
+    sort_by: date
+    permalink: /gallery/:path/
 
 # only tabs whose name is included will appear in sidebar (home always shown)
-sidebar_tabs: ["about", "posts", "publications"]
+sidebar_tabs: ["about", "posts", "publications", "gallery"]
 
 defaults:
   - scope:
@@ -205,6 +209,13 @@ defaults:
       path: _drafts
     values:
       comments: false
+  - scope:
+      path: ""
+      type: galleries
+    values:
+      layout: gallery_collection
+      comments: false
+      toc: false
   - scope:
       path: ""
       type: tabs # see `site.collections`
@@ -225,6 +236,8 @@ compress_html:
     envs: [development]
 
 exclude:
+  - "_galleries/*.yaml"
+  - "_galleries/*.yml"
   - "*.gem"
   - "*.gemspec"
   - docs

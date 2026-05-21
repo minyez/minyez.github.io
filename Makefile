@@ -1,9 +1,9 @@
 # vim: tabstop=4 shiftwidth=4 noexpandtab
 
-.PHONY: default build gem proof
+.PHONY: default build gem gallery proof
 
 # deploy local
-default:
+default: gallery
 	bundle exec jekyll serve --livereload --trace
 	# bundle exec jekyll serve --livereload --trace --port 18028
 
@@ -18,6 +18,9 @@ npm:
 gem:
 	bundle config set --local path "$(HOME)/.gem"
 	bundle
+
+gallery:
+	cd _galleries && $(MAKE)
 
 # https://talk.jekyllrb.com/t/chirpy-theme-a-tag-is-missing-a-reference/8731/6
 proof:

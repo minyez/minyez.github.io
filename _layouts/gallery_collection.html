@@ -1,0 +1,105 @@
+---
+layout: page
+---
+
+{% include lang.html %}
+
+{% assign photos = page.photos %}
+{% assign photo_count = photos | size %}
+{% assign gallery_notes = content | strip %}
+
+<div class="gallery-collection">
+  <header class="gallery-header">
+    <h1 data-toc-skip>{{ page.title }}</h1>
+
+    <div class="post-meta text-muted gallery-meta">
+      {% if page.date %}
+        <span>
+          <i class="far fa-calendar fa-fw me-1"></i>
+          {% include datetime.html date=page.date tooltip=true lang=lang %}
+        </span>
+      {% endif %}
+
+      {% if page.location %}
+        <span>
+          <i class="fas fa-location-dot fa-fw me-1"></i>
+          {{ page.location }}
+        </span>
+      {% endif %}
+
+      {% if photo_count > 0 %}
+        <span>
+          <i class="far fa-images fa-fw me-1"></i>
+          {{ photo_count }} photo{% unless photo_count == 1 %}s{% endunless %}
+        </span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if gallery_notes != empty %}
+    <div class="content gallery-notes">
+      {{ content }}
+    </div>
+  {% endif %}
+
+  {% if photo_count > 0 %}
+    <div class="gallery-grid" aria-label="{{ page.title | xml_escape }} photos">
+      {% for photo in photos %}
+        {% assign photo_src = photo.src | default: photo %}
+        {% assign thumb_src = photo.thumbnail | default: photo.thumb | default: photo_src %}
+        {% assign photo_alt = photo.alt | default: photo.caption | default: page.title %}
+        {% assign photo_caption = photo.caption | default: photo.alt %}
+
+        {% capture full_url %}
+          {% include gallery-image-url.html src=photo_src media_subpath=page.media_subpath %}
+        {% endcapture %}
+
+        {% capture thumb_url %}
+          {% include gallery-image-url.html src=thumb_src media_subpath=page.media_subpath %}
+        {% endcapture %}
+
+        <figure class="gallery-photo-item">
+          <a
+            href="{{ full_url | strip }}"
+            class="popup gallery-photo"
+            data-gallery="gallery-{{ page.slug | default: page.title | slugify }}"
+            {% if photo_caption %}data-title="{{ photo_caption | strip_html | xml_escape }}"{% endif %}
+          >
+            <span class="gallery-photo-frame" {% if photo.ratio %}style="--gallery-ratio: {{ photo.ratio }}"{% endif %}>
+              <img
+                src="{{ thumb_url | strip }}"
+                alt="{{ photo_alt | strip_html | xml_escape }}"
+                loading="lazy"
+              >
+            </span>
+          </a>
+
+          {% if photo_caption or photo.map %}
+            <figcaption>
+              {% if photo_caption %}
+                <span>{{ photo_caption }}</span>
+              {% endif %}
+
+              {% if photo.map %}
+                <a
+                  href="{{ photo.map }}"
+                  class="gallery-photo-map"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open map for {{ photo_alt | strip_html | xml_escape }}"
+                  title="Map"
+                >
+                  <i class="fas fa-location-dot fa-fw"></i>
+                </a>
+              {% endif %}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="gallery-empty text-muted">No photos in this collection yet.</p>
+  {% endif %}
+
+  {% include gallery-license.html scope='collection' %}
+</div>

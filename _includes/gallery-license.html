@@ -1,0 +1,20 @@
+{% assign gallery_license_scope = include.scope | default: 'gallery' %}
+{% assign gallery_license_name = 'CC BY-NC 4.0' %}
+{% assign gallery_license_link = 'https://creativecommons.org/licenses/by-nc/4.0/' %}
+
+<div class="post-tail-wrapper text-muted">
+  <div
+    class="
+      post-tail-bottom
+      d-flex justify-content-between align-items-center mt-5 pb-2
+    "
+  >
+    <div class="license-wrapper">
+      Photos in this {{ gallery_license_scope }} are licensed under
+      <a href="{{ gallery_license_link }}">{{ gallery_license_name }}</a>
+      by the author.
+    </div>
+  </div>
+  <!-- .post-tail-bottom -->
+</div>
+<!-- div.post-tail-wrapper -->

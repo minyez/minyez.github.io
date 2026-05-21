@@ -1,0 +1,29 @@
+{%- comment -%}
+  Resolve a gallery image URL with optional collection-level `media_subpath`.
+
+  Arguments:
+    src - required image path or URL
+    media_subpath - optional base path for relative image filenames
+{%- endcomment -%}
+
+{% assign src = include.src %}
+
+{% if src %}
+  {% assign resolved_src = src %}
+  {% assign first_char = src | slice: 0, 1 %}
+
+  {% if include.media_subpath %}
+    {% unless src contains ':' %}
+      {% unless first_char == '/' %}
+        {% assign resolved_src = include.media_subpath
+          | append: '/'
+          | append: src
+          | replace: '///', '/'
+          | replace: '//', '/'
+        %}
+      {% endunless %}
+    {% endunless %}
+  {% endif %}
+
+  {% include media-url.html src=resolved_src %}
+{% endif %}

@@ -1,0 +1,59 @@
+---
+layout: page
+---
+
+{% include lang.html %}
+
+{% assign galleries = site.galleries | sort: 'date' | reverse %}
+
+{% if galleries.size > 0 %}
+  <div id="gallery-list" class="gallery-list">
+    {% for gallery in galleries %}
+      {% assign first_photo = gallery.photos | first %}
+      {% assign cover = gallery.cover | default: gallery.image.path | default: gallery.image | default: first_photo.src %}
+      {% assign photo_count = gallery.photos | size %}
+
+      <article class="gallery-card-wrapper">
+        <a href="{{ gallery.url | relative_url }}" class="gallery-card">
+          {% if cover %}
+            {% capture cover_url %}
+              {% include gallery-image-url.html src=cover media_subpath=gallery.media_subpath %}
+            {% endcapture %}
+
+            <div class="gallery-card-cover">
+              <img
+                src="{{ cover_url | strip }}"
+                alt="{{ gallery.cover_alt | default: gallery.title | xml_escape }}"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+
+          <div class="gallery-card-body">
+            <h2 class="gallery-card-title">{{ gallery.title }}</h2>
+
+            <div class="gallery-card-meta">
+              {% if gallery.date %}
+                <span>
+                  <i class="far fa-calendar fa-fw me-1"></i>
+                  {% include datetime.html date=gallery.date lang=lang %}
+                </span>
+              {% endif %}
+
+              {% if photo_count > 0 %}
+                <span>
+                  <i class="far fa-images fa-fw me-1"></i>
+                  {{ photo_count }} photo{% unless photo_count == 1 %}s{% endunless %}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="gallery-empty text-muted">No gallery collections yet.</p>
+{% endif %}
+
+{% include gallery-license.html scope='gallery' %}

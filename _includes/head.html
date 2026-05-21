@@ -99,11 +99,16 @@
     <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
   {% endif %}
 
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+  {% if page.layout == 'post'
+    or page.layout == 'page'
+    or page.layout == 'home'
+    or page.layout == 'gallery'
+    or page.layout == 'gallery_collection'
+  %}
     <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
   {% endif %}
 
-  {% if page.layout == 'page' or page.layout == 'post' %}
+  {% if page.layout == 'page' or page.layout == 'post' or page.layout == 'gallery_collection' %}
     <!-- Image Popup -->
     <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
   {% endif %}

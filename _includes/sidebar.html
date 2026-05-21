@@ -27,13 +27,19 @@
       </li>
       <!-- the real tabs -->
       {% for tab in site.tabs %}
-        {% assign tab_name = tab.title | downcase %}
+        {% assign tab_title = tab.title | downcase %}
         {% if site.sidebar_tabs %}
-          {% unless site.sidebar_tabs contains tab_name %}
+          {% unless site.sidebar_tabs contains tab_title %}
           {% continue %}
           {% endunless %}
         {% endif %}
-        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+        {% assign tab_active = false %}
+        {% if tab.url == page.url %}
+          {% assign tab_active = true %}
+        {% elsif tab_title == 'gallery' and page.collection == 'galleries' %}
+          {% assign tab_active = true %}
+        {% endif %}
+        <li class="nav-item{% if tab_active %}{{ " active" }}{% endif %}">
           <a href="{{ tab.url | relative_url }}" class="nav-link">
             <i class="fa-fw {{ tab.icon }}"></i>
             {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
