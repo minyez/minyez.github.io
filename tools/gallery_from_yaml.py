@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any, Optional, Union
 
 
-MAX_BYTES_DEFAULT = 300 * 1024
+MAX_BYTES_DEFAULT = 150 * 1024
 MAX_EDGE_DEFAULT = 1800
 MIN_EDGE_DEFAULT = 900
 QUALITY_DEFAULT = 85
@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
         "--max-bytes",
         type=int,
         default=MAX_BYTES_DEFAULT,
-        help="Maximum generated image size in bytes. Default: 307200 (300 KiB).",
+        help="Maximum generated image size in bytes. Default: 153600 (150 KiB).",
     )
     parser.add_argument(
         "--max-edge",
