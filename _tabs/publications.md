@@ -122,12 +122,12 @@ toc: true
 
 {: reversed="true"}
 1.  <ins>**M.-Y. Zhang**</ins>, P. Lin, R. Shi, and X. Ren, \"Low-scaling all-electron
-    GW for periodic systems in the numeric atomic-centered orbital
+    GW for periodic systems in the numeric atom-centered orbital
     framework\",
-    <a href="https://events.ms1p.org/event/18/page/16-program"
-    target="_blank">FHI-aims Developers' and Users' Meeting 2026</a>,
-    Max Planck Institute for the Structure and Dynamics of Matter
-    (MPSD), Hamburg, Germany, 2026-06-11.
+    <a href="https://events.ms1p.org/event/18" target="_blank">FHI-aims
+    Developers' and Users' Meeting 2026</a>, Max Planck Institute for
+    the Structure and Dynamics of Matter (MPSD), Hamburg, Germany,
+    2026-06-11.
 2.  <ins>**M.-Y. Zhang**</ins>, M. Scheffler, and X. Ren, \"Temperature-dependent
     electronic band structure with all-electron many-body *GW* method\",
     <a href="https://nomad-laboratory.de/nomad_international_ws_juist_2025"
