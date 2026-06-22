@@ -19,16 +19,21 @@ toc: true
     target="_blank">Low-Scaling GW Calculations of Quasi-Particle Energies
     for Extended Systems within the Numerical Atomic Orbital Framework</a>, J.
     Chem. Theory Comput. **22**, 5770 (2026).
+    \[<a href="https://arxiv.org/abs/2603.27292"
+    target="_blank">arXiv:2603.27292</a>\]
 2.  B. Jia, <ins>**M.-Y. Zhang**</ins>, Z. Guan, H. Gong, and X. Ren,
     <a href="https://doi.org/10.1063/5.0332586" target="_blank">All-Electron
     Quasiparticle Self-Consistent GW for Molecules and Periodic Systems
     within the Numerical Atomic Orbital Framework</a>, J. Chem. Phys.
-    **164**, 194115 (2026).
+    **164**, 194115 (2026). \[<a href="https://arxiv.org/abs/2603.00637"
+    target="_blank">arXiv:2603.00637</a>\]
 3.  Y. Cao, <ins>**M.-Y. Zhang**</ins>, P. Lin, M. Chen, and X. Ren,
     <a href="https://doi.org/10.1021/acs.jctc.5c00537"
     target="_blank">Applying Space-Group Symmetry to Speed up
     Hybrid-Functional Calculations within the Framework of Numerical Atomic
     Orbitals</a>, J. Chem. Theory Comput. **21**, 8086 (2025).
+    \[<a href="https://arxiv.org/abs/2504.02422"
+    target="_blank">arXiv:2504.02422</a>\]
 4.  <ins>**M.-Y. Zhang**</ins> and H. Jiang,
     <a href="https://doi.org/10.1103/PhysRevB.111.125204"
     target="_blank">Electronic Band Structure of Cuprous Delafossite CuMO2
@@ -108,12 +113,7 @@ toc: true
     class="math inline">\\(G^0W^0\\)</span> Implementation Based on the
     Pseudopotential and Numerical-Atomic-Orbital Basis-Set Framework:
     Algorithms and Benchmarks</a>*, arXiv:2605.11512.
-2.  <ins>**M.-Y. Zhang**</ins>, P. Lin, R. Shi, and X. Ren,
-    *<a href="https://doi.org/10.48550/arXiv.2603.27292"
-    target="_blank">Low-Scaling GW Calculations of Quasi-Particle Energies
-    for Extended Systems within the Numerical Atomic Orbital Framework</a>*,
-    arXiv:2603.27292.
-3.  J. W. Abbott et al.,
+2.  J. W. Abbott et al.,
     *<a href="https://doi.org/10.48550/arXiv.2505.00125"
     target="_blank">Roadmap on Advancements of the FHI-aims Software
     Package</a>*, arXiv:2505.00125.
