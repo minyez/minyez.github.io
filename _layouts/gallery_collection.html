@@ -13,7 +13,12 @@ layout: page
     <h1 data-toc-skip>{{ page.title }}</h1>
 
     <div class="post-meta text-muted gallery-meta">
-      {% if page.date %}
+      {% if page.period %}
+        <span>
+          <i class="far fa-calendar fa-fw me-1"></i>
+          {{ page.period }}
+        </span>
+      {% elsif page.date %}
         <span>
           <i class="far fa-calendar fa-fw me-1"></i>
           {% include datetime.html date=page.date tooltip=true lang=lang %}

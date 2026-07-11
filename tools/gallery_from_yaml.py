@@ -428,9 +428,22 @@ def collection_photo(photo: dict[str, Any]) -> dict[str, Any]:
 
 
 def collection_front_matter(data: dict[str, Any]) -> dict[str, Any]:
-    required = ("title", "date", "location", "media_subpath")
+    required = ("title", "location", "media_subpath")
     front_matter: dict[str, Any] = {}
-    for key in required:
+    title = data.get("title")
+    if title in (None, ""):
+        raise GalleryError("`title` is required.")
+    front_matter["title"] = title
+
+    date = data.get("date")
+    if date not in (None, ""):
+        front_matter["date"] = date
+
+    period = data.get("period")
+    if period not in (None, ""):
+        front_matter["period"] = period
+
+    for key in ("location", "media_subpath"):
         value = data.get(key)
         if value in (None, ""):
             raise GalleryError(f"`{key}` is required.")

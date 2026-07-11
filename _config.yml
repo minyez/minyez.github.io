@@ -187,7 +187,6 @@ collections:
     sort_by: order
   galleries:
     output: true
-    sort_by: date
     permalink: /gallery/:path/
 
 # only tabs whose name is included will appear in sidebar (home always shown)

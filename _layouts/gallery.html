@@ -33,7 +33,12 @@ layout: page
             <h2 class="gallery-card-title">{{ gallery.title }}</h2>
 
             <div class="gallery-card-meta">
-              {% if gallery.date %}
+              {% if gallery.period %}
+                <span>
+                  <i class="far fa-calendar fa-fw me-1"></i>
+                  {{ gallery.period }}
+                </span>
+              {% elsif gallery.date %}
                 <span>
                   <i class="far fa-calendar fa-fw me-1"></i>
                   {% include datetime.html date=gallery.date lang=lang %}
