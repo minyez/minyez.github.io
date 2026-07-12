@@ -4,7 +4,7 @@ layout: page
 
 {% include lang.html %}
 
-{% assign galleries = site.galleries | sort: 'date' | reverse %}
+{% assign galleries = site.galleries | sort: 'gallery_sort_date' | reverse %}
 
 {% if galleries.size > 0 %}
   <div id="gallery-list" class="gallery-list">
