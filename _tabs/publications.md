@@ -105,16 +105,21 @@ toc: true
 ## Preprints
 
 {: reversed="true"}
-1.  Z. Guan, Y. Cao, <ins>**M.-Y. Zhang**</ins>, P. Lin, R. Zhou, and X. Ren\*,
+1.  J. Yu, X. Zhang, <ins>**M.-Y. Zhang**</ins>, Y. Cao, Q. Sun, and H.-Z. Ye\*,
+    [Correlation-Consistent Gaussian Basis Sets for Copper Solids from
+    Material-Constrained Atomic
+    Optimization](https://arxiv.org/abs/2607.11711), arXiv:2607.11711
+    (2026).
+2.  Z. Guan, Y. Cao, <ins>**M.-Y. Zhang**</ins>, P. Lin, R. Zhou, and X. Ren\*,
     [Efficient Bethe-Salpeter Equation Calculations Based on Numerical
     Atomic Orbitals and Norm-Conserving Pseudopotentials: Dual-K-Mesh
     Strategy](http://arxiv.org/abs/2607.05853), arXiv:2607.05853 (2026).
-2.  H. Gong, <ins>**M.-Y. Zhang**</ins>\*, P. Lin, B. Jia, Z. Guan, L. He\*, and X. Ren\*,
+3.  H. Gong, <ins>**M.-Y. Zhang**</ins>\*, P. Lin, B. Jia, Z. Guan, L. He\*, and X. Ren\*,
     [$G^0W^0$ Implementation Based on the Pseudopotential and
     Numerical-Atomic-Orbital Basis-Set Framework: Algorithms and
     Benchmarks](https://arxiv.org/abs/2605.11512), arXiv:2605.11512
     (2026).
-3.  J. W. Abbott et al., [Roadmap on Advancements of the FHI-aims
+4.  J. W. Abbott et al., [Roadmap on Advancements of the FHI-aims
     Software Package](https://doi.org/10.48550/arXiv.2505.00125),
     arXiv:2505.00125 (2026).
 
