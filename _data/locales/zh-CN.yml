@@ -28,6 +28,7 @@ search:
 panel:
   lastmod: 最近更新
   trending_tags: 热门标签
+  backlinks: 反向链接
   toc: 文章内容
 
 copyright:

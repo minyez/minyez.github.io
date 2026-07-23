@@ -1,0 +1,24 @@
+{% if site.backlinks and page.backlinks %}
+  {% assign backlinks = '' | split: '' %}
+
+  {% for post in site.posts %}
+    {% unless post.url == page.url %}
+      {% if post.content contains page.url or post.content contains page.path %}
+        {% assign backlinks = backlinks | push: post %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if backlinks.size > 0 %}
+    <section id="backlinks" class="mt-5 ps-3 pe-4 border-start">
+      <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.backlinks | default: 'Backlinks' -}}</h2>
+      <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+        {% for post in backlinks %}
+          <li class="text-truncate lh-lg">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endif %}

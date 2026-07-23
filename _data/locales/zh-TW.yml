@@ -28,6 +28,7 @@ search:
 panel:
   lastmod: 最近更新
   trending_tags: 熱門標籤
+  backlinks: 反向連結
   toc: 文章摘要
 
 copyright:
