@@ -95,6 +95,14 @@ def parse_args() -> argparse.Namespace:
         help="Lowest image quality to try. Default: 55.",
     )
     parser.add_argument(
+        "--use-smallest",
+        action="store_true",
+        help=(
+            "Use the smallest generated image when none meet --max-bytes, "
+            "instead of failing."
+        ),
+    )
+    parser.add_argument(
         "--magick",
         type=Path,
         help="Path to ImageMagick's `magick` executable.",
@@ -348,6 +356,7 @@ def convert_image(
     min_edge: int,
     quality: int,
     min_quality: int,
+    use_smallest: bool,
     dry_run: bool,
 ) -> None:
     if not source.exists():
@@ -357,46 +366,52 @@ def convert_image(
         print(f"convert {source} -> {target}")
         return
 
-    target.parent.mkdir(parents=True, exist_ok=True)
     best_size: Optional[int] = None
 
-    for edge in edge_steps(max_edge, min_edge):
-        for q_value in quality_steps(quality, min_quality):
-            fd, tmp_name = tempfile.mkstemp(
-                prefix=f".{target.stem}.",
-                suffix=target.suffix or ".jpg",
-                dir=str(target.parent),
-            )
-            os.close(fd)
-            tmp_path = Path(tmp_name)
+    with tempfile.TemporaryDirectory(prefix="gallery-image-") as tmp_dir:
+        suffix = target.suffix or ".jpg"
+        tmp_path = Path(tmp_dir) / f"candidate{suffix}"
+        best_path = Path(tmp_dir) / f"smallest{suffix}"
 
-            cmd = [
-                magick,
-                str(source),
-                "-auto-orient",
-                "-resize",
-                f"{edge}x{edge}>",
-                "-strip",
-                "-quality",
-                str(q_value),
-                str(tmp_path),
-            ]
+        for edge in edge_steps(max_edge, min_edge):
+            for q_value in quality_steps(quality, min_quality):
+                cmd = [
+                    magick,
+                    str(source),
+                    "-auto-orient",
+                    "-resize",
+                    f"{edge}x{edge}>",
+                    "-strip",
+                    "-quality",
+                    str(q_value),
+                    str(tmp_path),
+                ]
 
-            try:
-                subprocess.run(cmd, check=True, capture_output=True, text=True)
+                try:
+                    subprocess.run(cmd, check=True, capture_output=True, text=True)
+                except subprocess.CalledProcessError as exc:
+                    raise GalleryError(
+                        f"ImageMagick failed for {source}: {exc.stderr.strip()}"
+                    ) from exc
+
                 size = tmp_path.stat().st_size
-                best_size = size if best_size is None else min(best_size, size)
+                if best_size is None or size < best_size:
+                    best_size = size
+                    shutil.copy2(tmp_path, best_path)
                 if size <= max_bytes:
-                    tmp_path.replace(target)
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(tmp_path, target)
                     print(f"wrote {target} ({size / 1024:.0f} KiB)")
                     return
-            except subprocess.CalledProcessError as exc:
-                raise GalleryError(
-                    f"ImageMagick failed for {source}: {exc.stderr.strip()}"
-                ) from exc
-            finally:
-                if tmp_path.exists():
-                    tmp_path.unlink()
+
+        if use_smallest and best_size is not None:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(best_path, target)
+            print(
+                f"wrote {target} ({best_size / 1024:.0f} KiB; "
+                f"smallest candidate exceeds {max_bytes / 1024:.0f} KiB)"
+            )
+            return
 
     size_text = "unknown" if best_size is None else f"{best_size / 1024:.0f} KiB"
     raise GalleryError(
@@ -521,6 +536,7 @@ def process_assets(data: dict[str, Any], yaml_dir: Path, args: argparse.Namespac
             min_edge=args.min_edge,
             quality=args.quality,
             min_quality=args.min_quality,
+            use_smallest=args.use_smallest,
             dry_run=args.dry_run,
         )
 
