@@ -1,0 +1,25 @@
+---
+title: "Berlin/Dresden - December 2024"
+date: 2024-12-01
+location: "Berlin/Dresden"
+media_subpath: "/assets/img/gallery/202412_Berlin_Dresden"
+cover: "king_johann.jpg"
+photos:
+  - src: "how_long_was_now.jpg"
+  - src: "on_spree.jpg"
+    caption: "On the Spree"
+  - src: "side_spree.jpg"
+    caption: "Walk along the Spree"
+  - src: "pferdestudie.jpg"
+    caption: "Pferdestudie (Alte Nationalgalerie)"
+    map: "https://maps.app.goo.gl/jxyAJWqEUkgT9bvD6"
+  - src: "chimpanzee_missie.jpg"
+    caption: "Portrait of the Chimpanzee Missie"
+  - src: "kronentor.jpg"
+    caption: "Kronentor"
+    map: "https://maps.app.goo.gl/V1MV923vxxDmkGLd6"
+  - src: "king_johann.jpg"
+    caption: "Statue of King Johann"
+    map: "https://maps.app.goo.gl/mKbfTtVQbFmF23mY7"
+  - src: "gazing_elbe.jpg"
+---
