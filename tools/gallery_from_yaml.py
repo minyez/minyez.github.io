@@ -310,7 +310,14 @@ def resolve_source(
     photo: dict[str, Any],
     yaml_dir: Path,
     source_common: Optional[str],
+    sources: Optional[dict[Any, Any]] = None,
 ) -> Optional[Path]:
+    has_source_key = "source_key" in photo
+    if has_source_key and sources is None:
+        raise GalleryError(
+            "A photo with `source_key` requires a top-level `sources` mapping."
+        )
+
     raw_source = photo.get("source")
     if not raw_source:
         return None
@@ -318,6 +325,17 @@ def resolve_source(
     source = expand_path(str(raw_source))
     if source.is_absolute():
         return source
+
+    if has_source_key:
+        assert sources is not None
+        source_key = photo["source_key"]
+        try:
+            source_dir = sources[source_key]
+        except (KeyError, TypeError) as exc:
+            raise GalleryError(f"Unknown `source_key`: {source_key!r}.") from exc
+        if source_dir in (None, ""):
+            raise GalleryError(f"Source directory for {source_key!r} is empty.")
+        return (expand_path(str(source_dir)) / source).resolve()
 
     if source_common:
         return (expand_path(source_common) / source).resolve()
@@ -495,19 +513,23 @@ def process_assets(data: dict[str, Any], yaml_dir: Path, args: argparse.Namespac
         source_common = str(source_common)
     else:
         source_common = None
+    sources = data.get("sources")
+    if sources is not None and not isinstance(sources, dict):
+        raise GalleryError("`sources` must be a mapping.")
 
     photos = data.get("photos") or []
     if not isinstance(photos, list):
         raise GalleryError("`photos` must be a list.")
 
-    conversion_needed = False
+    assets: list[tuple[Path, Optional[Path]]] = []
     for photo in photos:
         if not isinstance(photo, dict):
             raise GalleryError("Each photo entry must be a mapping.")
         target = resolve_target(asset_dir, str(photo.get("name") or photo.get("src") or ""))
-        if args.force_assets or not target.exists():
-            conversion_needed = True
+        source = resolve_source(photo, yaml_dir, source_common, sources)
+        assets.append((target, source))
 
+    conversion_needed = any(args.force_assets or not target.exists() for target, _ in assets)
     magick = find_magick(args.magick) if conversion_needed else ""
 
     if not args.dry_run:
@@ -515,13 +537,11 @@ def process_assets(data: dict[str, Any], yaml_dir: Path, args: argparse.Namespac
     else:
         print(f"ensure directory {asset_dir}")
 
-    for photo in photos:
-        target = resolve_target(asset_dir, str(photo.get("name") or photo.get("src") or ""))
+    for target, source in assets:
         if target.exists() and not args.force_assets:
             print(f"keep existing {target}")
             continue
 
-        source = resolve_source(photo, yaml_dir, source_common)
         if not source:
             raise GalleryError(
                 f"{target.name} is missing and its photo entry has no `source`."
