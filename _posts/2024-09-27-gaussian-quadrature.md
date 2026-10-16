@@ -193,13 +193,11 @@ for n in [2, 3, 4, 5, 6]:
           .format(n, 2 * n - 1, integral))
 ```
 
-``` example
-N = 2, 2N-1 =  3, integral = 0.8148148148
-N = 3, 2N-1 =  5, integral = 1.5306666667
-N = 4, 2N-1 =  7, integral = 1.9303401361
-N = 5, 2N-1 =  9, integral = 2.0000000000
-N = 6, 2N-1 = 11, integral = 2.0000000000
-```
+    N = 2, 2N-1 =  3, integral = 0.8148148148
+    N = 3, 2N-1 =  5, integral = 1.5306666667
+    N = 4, 2N-1 =  7, integral = 1.9303401361
+    N = 5, 2N-1 =  9, integral = 2.0000000000
+    N = 6, 2N-1 = 11, integral = 2.0000000000
 
 ## Extension to any interval
 
@@ -242,7 +240,7 @@ x_n \to& \frac{b-a}{2}x_n + \frac{a+b}{2}
 It can be also extended to some open intervals. For example,
 
 $$\begin{equation}
-x = \frac{1+t}{1-t} + c
+x = b\frac{1+t}{1-t} + c \qquad (b>0)
 \end{equation}$$
 
 can be used for semi-infinite integral $[c, \infty)$. In this case,
@@ -250,9 +248,9 @@ can be used for semi-infinite integral $[c, \infty)$. In this case,
 $$\begin{equation*}
 \begin{aligned}
 I =& \int^{\infty}_0\dd{x} f(x)
-= \int^{\infty}_0 \dd{\left(\frac{1+t}{1-t}\right)} f(\frac{1+t}{1-t} + c) \\
-=& \int^{1}_{-1} \dd{t} \frac{2}{\left(1-t\right)^{2}} f(\frac{1+t}{1-t} + c)
-\approx \sum^N_{n=1} \frac{2w_n}{\left(1-x_{n}\right)^{2}} f(\frac{1+x_n}{1-x_n} + c) \\
+= \int^{\infty}_0 \dd{b\left(\frac{1+t}{1-t}\right)} f(b\frac{1+t}{1-t} + c) \\
+=& \int^{1}_{-1} \dd{t} \frac{2b}{\left(1-t\right)^{2}} f(b\frac{1+t}{1-t} + c)
+\approx \sum^N_{n=1} b\frac{2w_n}{\left(1-x_{n}\right)^{2}} f(b\frac{1+x_n}{1-x_n} + c) \\
 \end{aligned}
 \end{equation*}$$
 
@@ -260,8 +258,8 @@ therefore
 
 $$\begin{equation}\label{eq:glq-weights-c-inf}
 \begin{aligned}
-w_n \to& \frac{2}{\left(1-x_{n}\right)^{2}} w_n \\
-x_n \to& \frac{1+x_n}{1-x_n} + c
+w_n \to& \frac{2b}{\left(1-x_{n}\right)^{2}} w_n \\
+x_n \to& b\frac{1+x_n}{1-x_n} + c
 \end{aligned}
 \end{equation}$$
 
